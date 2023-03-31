@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -26,6 +27,15 @@ export async function loginGoogle() {
 
   return resultado.user;
 }
+
+
+export async function loginFacebook(){
+const provider = new FacebookAuthProvider();
+const resultado = await signInWithPopup(auth, provider)
+return resultado.user;
+
+};
+
 
 export async function loginEmailSenha(email, senha) {
   // Vai realizar o login com uma conta de email já existente
