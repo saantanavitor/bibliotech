@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
+import githubIcon from "../../assets/icons/github.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginGithub } from "../../firebase/auth";
 
 export function Login() {
   const {
@@ -58,6 +59,23 @@ export function Login() {
       });
   }
 
+  function onLoginGithub() {
+    loginGithub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -66,6 +84,7 @@ export function Login() {
   }
 
   return (
+
     <div data-theme="white-content">
       <Container fluid className="my-5">
         <p className="text-center">
@@ -79,6 +98,10 @@ export function Login() {
         <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
           <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
           Google
+        </Button>
+        <Button className="mb-3 ms-3" variant="dark" onClick={onLoginGithub}>
+          <img src={githubIcon} width="32" alt="Google icon" /> Entrar com o
+        GitHub
         </Button>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">
