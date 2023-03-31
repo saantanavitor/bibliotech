@@ -4,7 +4,7 @@ import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
 import { Root } from "./pages/Root/Root";
 import { Toaster } from "react-hot-toast";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { AuthContext } from "./contexts/AuthContext";
@@ -14,10 +14,11 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 export function App() {
-  const [usuarioLogado, setUsuarioLogado] = useState(null);
-
+  const [usuarioLogado, setUsuarioLogado] = useState(null); 
+  
   useEffect(() => {
     // Monitorar/detectar o usuário conectado
     // Fica sabendo quando loga/desloga
@@ -32,11 +33,11 @@ export function App() {
   }, []);
 
   return (
-    <>
-      <AuthContext.Provider value={usuarioLogado}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Root />}>
+      <>
+        <AuthContext.Provider value={usuarioLogado}>   
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Root />}>
               <Route path="/" element={<Home />} />
               <Route path="/livros" element={<Livros />} />
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
@@ -44,13 +45,13 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-            </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthContext.Provider>
-      <Toaster />
+              </Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/cadastro" element={<Cadastro />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthContext.Provider>
+        <Toaster />
     </>
   );
 }

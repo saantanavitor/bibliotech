@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { addLivro, uploadCapaLivro } from "../../firebase/livros";
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
+
 
 export function AdicionarLivro() {
-
+    const {theme} = useContext(ThemeContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
@@ -33,9 +36,9 @@ export function AdicionarLivro() {
     }
 
     return (
-        <div className="adicionar-livro">
+        <div className="adicionar-livro page" data-theme={theme}>
             <Container>
-                <h1>Adicionar livro</h1>
+                <h1 className="pageTitle">Adicionar livro</h1>
                 <hr />
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
