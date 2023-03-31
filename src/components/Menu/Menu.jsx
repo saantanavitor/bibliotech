@@ -48,6 +48,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
+            <Nav.Link as={Link} to="/autores">
+              Autores
+            </Nav.Link>
             <Nav.Link>
             <ThemeContext.Consumer>
               {({ changeTheme }) => (
