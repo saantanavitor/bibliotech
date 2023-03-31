@@ -6,8 +6,9 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import loginImg from "../../assets/images/login.png";
+import facebookIcon from "../../assets/icons/facebook (1).svg";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha, loginGithub } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook, loginGithub } from "../../firebase/auth";
 
 export function Login() {
   const {
@@ -59,6 +60,9 @@ export function Login() {
       });
   }
 
+  function onLoginFacebook() {
+    loginFacebook()
+
   function onLoginGithub() {
     loginGithub()
       .then((user) => {
@@ -84,7 +88,6 @@ export function Login() {
   }
 
   return (
-
     <div data-theme="white-content">
       <Container fluid className="my-5">
         <p className="text-center">
@@ -102,6 +105,10 @@ export function Login() {
         <Button className="mb-3 ms-3" variant="dark" onClick={onLoginGithub}>
           <img src={githubIcon} width="32" alt="Google icon" /> Entrar com o
         GitHub
+        </Button>
+        <Button className="mb-3 ms-3" variant="primary" onClick={onLoginFacebook}>
+          <img src={facebookIcon} width="48" alt="Facebook icon" /> Entrar com o
+        Facebook
         </Button>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">

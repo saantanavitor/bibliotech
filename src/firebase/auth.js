@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   signInWithPopup,
@@ -28,6 +29,13 @@ export async function loginGoogle() {
 
   return resultado.user;
 }
+
+export async function loginFacebook(){
+const provider = new FacebookAuthProvider();
+const resultado = await signInWithPopup(auth, provider)
+return resultado.user;
+
+};
 
 export async function loginGithub() {
   const provider = new GithubAuthProvider();
