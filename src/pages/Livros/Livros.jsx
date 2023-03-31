@@ -1,14 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
+import { ThemeContext, themes } from '../../contexts/ThemeContext';
+import { ThemeContextWrapper } from '../../contexts/ThemeContextWrapper';
+
 
 export function Livros() {
 
     const [livros, setLivros] = useState(null);
+    const {theme} = useContext(ThemeContext);
+    const [color, setColor] = useState(false);
+    function changeColor () {
+        if (color === true){
+          setColor(false);
+        }
+        else {
+          setColor(true);
+        }
+      }
 
     useEffect(() => {
         initializeTable();
@@ -31,19 +44,19 @@ export function Livros() {
     }
 
     return (
-        <div className="livros">
+        <div className="livros page" data-theme={theme}>
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
-                    <h1>Livros</h1>
+                    <h1 className="pageTitle">Livros</h1>
                     <Button as={Link} to="/livros/adicionar" variant="success">
                         Adicionar Livro
                     </Button>
                 </div>
-                <hr />
+                <hr className="divider"/>
                 {livros === null ?
                     <Loader />
                     : 
-                    <Table striped bordered hover>
+                    <Table bordered>
                         <thead>
                             <tr>
                                 <th>Título</th>
