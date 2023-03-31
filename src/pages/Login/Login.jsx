@@ -68,6 +68,9 @@ export function Login() {
       <p className="text-muted">
         Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
       </p>
+      <p className="text-muted">
+        Esqueceu sua senha? <Link to="/esqueciSenha">Esqueci minha senha</Link>
+      </p>
       <hr />
       <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
@@ -102,6 +105,7 @@ export function Login() {
           Entrar
         </Button>
       </Form>
+      
     </Container>
   );
 }
