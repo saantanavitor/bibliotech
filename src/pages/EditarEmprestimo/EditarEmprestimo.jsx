@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmprestimo, updateEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function EditarEmprestimo() {
-
+    const {theme} = useContext(ThemeContext);
     const {id} = useParams();
 
     const [livros, setLivros] = useState([]);
@@ -38,7 +39,7 @@ export function EditarEmprestimo() {
     }, [id, reset]);
 
     return (
-        <div className="editar-emprestimo">
+        <div className="editar-emprestimo page" data-theme={theme}>
             <Container>
                 <h1>Editar empréstimo</h1>
                 <hr />

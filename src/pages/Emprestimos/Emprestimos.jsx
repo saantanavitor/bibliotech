@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Badge, Button, Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function Emprestimos() {
 
     const [emprestimos, setEmprestimos] = useState(null);
+    const {theme} = useContext(ThemeContext);
 
     useEffect(() => {
         getEmprestimos().then(busca => {
@@ -15,18 +17,18 @@ export function Emprestimos() {
     }, [])
 
     return (
-        <div className="emprestimos">
+        <div className="emprestimos page" data-theme={theme}>
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
-                    <h1>Emprestimos</h1>
+                    <h1 className="pageTitle">Emprestimos</h1>
                     <Button as={Link} to="/emprestimos/adicionar" variant="success">Adicionar emprestimo</Button>
                 </div>
-                <hr />
+                <hr className="divider" />
                 {
                     emprestimos === null ?
                         <Loader />
                         :
-                        <Table striped bordered hover>
+                        <Table bordered>
                             <thead>
                                 <tr>
                                     <th>Leitor</th>
