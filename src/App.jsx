@@ -15,6 +15,8 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { ThemeContext } from "./contexts/ThemeContext";
+import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null); 
@@ -46,12 +48,13 @@ export function App() {
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
               </Route>
-              <Route path="/login" element={<Login />} />
-              <Route path="/cadastro" element={<Cadastro />} />
-            </Routes>
-          </BrowserRouter>
-        </AuthContext.Provider>
-        <Toaster />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/esqueciSenha" element={<EsqueciSenha />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthContext.Provider>
+      <Toaster />
     </>
   );
 }
