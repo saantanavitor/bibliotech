@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithPopup,
   signOut,
   GithubAuthProvider,
@@ -40,6 +41,10 @@ export async function loginEmailSenha(email, senha) {
   const resultado = await signInWithEmailAndPassword(auth, email, senha);
 
   return resultado.user;
+}
+
+export async function recuperarSenha(email){
+  await sendPasswordResetEmail(auth, email);
 }
 
 export async function logout() {
