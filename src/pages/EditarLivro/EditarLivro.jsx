@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLivro, updateLivro, uploadCapaLivro } from "../../firebase/livros";
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function EditarLivro() {
 
+    const {theme} = useContext(ThemeContext);
     const {id} = useParams();
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
@@ -43,7 +45,7 @@ export function EditarLivro() {
     }, [id, reset]);
 
     return (
-        <div className="editar-livro">
+        <div className="editar-livro page" data-theme={theme}>
             <Container>
                 <h1>Editar livro</h1>
                 <hr />
