@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -23,6 +24,13 @@ export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
+
+  return resultado.user;
+}
+
+export async function loginGithub() {
+  const provider = new GithubAuthProvider();
+  const resultado = await signInWithPopup(auth, provider)
 
   return resultado.user;
 }
