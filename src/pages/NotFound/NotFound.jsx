@@ -27,6 +27,7 @@ const closeModal = useCallback(() =>{
     setShowModal(false);
 },[]);
     
+
     return (
         <Container className="d-flex flex-column justify-content-center align-items-center">
             <img src={notFoundImg} className="rounded float-end" width="300"alt="imagem de pagina não encontrada"/>
