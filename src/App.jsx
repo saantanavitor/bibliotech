@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Cadastro } from "./pages/Cadastro/Cadastro";
 import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { NotFound } from "./pages/NotFound/NotFound";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -44,9 +45,12 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+    
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path='*' element={<Navigate to="/404" />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
