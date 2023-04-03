@@ -62,7 +62,7 @@ export function Login() {
 
   function onLoginFacebook() {
     loginFacebook()
-
+  }
   function onLoginGithub() {
     loginGithub()
       .then((user) => {
@@ -146,4 +146,4 @@ export function Login() {
       </Container>
     </div>
   );
-}
+  }

@@ -3,7 +3,7 @@ import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-import { deleteLivro, getLivros } from "../../firebase/livros";
+import { updateLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { ThemeContext, themes } from '../../contexts/ThemeContext';
 import { ThemeContextWrapper } from '../../contexts/ThemeContextWrapper';
@@ -13,15 +13,6 @@ export function Livros() {
 
     const [livros, setLivros] = useState(null);
     const {theme} = useContext(ThemeContext);
-    const [color, setColor] = useState(false);
-    function changeColor () {
-        if (color === true){
-          setColor(false);
-        }
-        else {
-          setColor(true);
-        }
-      }
 
     useEffect(() => {
         initializeTable();
@@ -32,11 +23,11 @@ export function Livros() {
             setLivros(resultados)
         })
     }
-
-    function onDeleteLivro(id, titulo) {
-        const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
-        if(deletar) {
-            deleteLivro(id).then(() => {
+ 
+    function softDelete(id, titulo) {                       // Função alterada de onDeleteLivro para softDelete
+        const desativar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);         // variável alterada de deletar para desativar
+        if(desativar) {
+            updateLivro(id,{active:false}).then(() => {                                                      // Trocando deleteLivro por updateLivro
                 toast.success(`${titulo} apagado com sucesso!`, {duration: 2000, position: "bottom-right"});
                 initializeTable();
             })
@@ -88,7 +79,7 @@ export function Livros() {
                                             >
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
-                                            <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                                            <Button size="sm" variant="danger" onClick={() => softDelete(livro.id, livro.titulo)}>
                                                 <i className="bi bi-trash3-fill"></i>
                                             </Button>
                                         </td>

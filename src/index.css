@@ -11,7 +11,7 @@
 }
 
 [data-theme="dark"] {                    /* Classe pai envolvendo todas as variáveis filhas */
-    --background: #000000;
+    --background: #0A0A0A;
     --title: white;
     --button: #000000;
     --divider: #FFFFFF;

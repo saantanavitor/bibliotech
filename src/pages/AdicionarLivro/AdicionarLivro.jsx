@@ -73,6 +73,7 @@ export function AdicionarLivro() {
                         <Form.Label>Imagem da capa</Form.Label>
                         <Form.Control type="file" accept=".png,.jpg,.jpeg,.gif" {...register("imagem")} />
                     </Form.Group>
+                    <Form.Control type="hidden" {...register("active", {value: true})} /> {/*Criando o input com o valor "active" para que possa ser colocado como false ao ser deletado, ou seja, todo livro criado será TRUE */}
                     <Button type="submit" variant="success">Adicionar</Button>
                 </Form>
             </Container>

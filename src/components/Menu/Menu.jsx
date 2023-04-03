@@ -9,16 +9,8 @@ import { useState, useContext } from 'react';
 export function Menu() {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);           // Trazendo o contexto do tema
-  const [darkMode, setDarkMode] = useState(true);       // useState para alteração do light para dark mode
-  const [color, setColor] = useState(true); // useState para alteração do bg
-  const changeColor = () => {
-    if (darkMode = true){
-      setColor(true);
-    }
-    else {
-      setColor(false);
-    }
-  }
+  const [darkMode, setDarkMode] = useState(true);
+  
 
 
   function onLogout() {
@@ -29,14 +21,14 @@ export function Menu() {
 
   return (
     
-    <Navbar bg={darkMode ? "dark": "success"} variant="dark" expand="lg">
+    <Navbar bg={theme === "dark" ? "dark" : "success" } variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
             <img src={logoIcon} width="32" alt="Logo" />
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse>
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">
@@ -57,7 +49,7 @@ export function Menu() {
                 <i onClick={() => {
                   setDarkMode(!darkMode);
                   changeTheme(darkMode ? themes.light : themes.dark);
-                }} className={ darkMode ? "bi bi-brightness-high" : "bi bi-moon"}></i>
+                }} className={ theme === "dark" ? "bi bi-brightness-high" : "bi bi-moon"}></i>
               )}
             </ThemeContext.Consumer>
           </Nav.Link>
