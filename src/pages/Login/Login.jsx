@@ -63,6 +63,7 @@ export function Login() {
   function onLoginFacebook() {
     loginFacebook()
   }
+
   function onLoginGithub() {
     loginGithub()
       .then((user) => {
@@ -107,7 +108,7 @@ export function Login() {
         GitHub
         </Button>
         <Button className="mb-3 ms-3" variant="primary" onClick={onLoginFacebook}>
-          <img src={facebookIcon} width="48" alt="Facebook icon" /> Entrar com o
+          <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
         Facebook
         </Button>
         <Form onSubmit={handleSubmit(onSubmit)}>
