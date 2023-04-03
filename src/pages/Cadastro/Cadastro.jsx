@@ -1,4 +1,10 @@
-import { Button, Container, Form } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Form,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
@@ -36,6 +42,20 @@ export function Cadastro() {
       });
   }
 
+  const renderTooltipGoogle = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Login com o Google
+    </Tooltip>
+  );
+
+  const renderTooltipCadastro = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     Confirmar Cadastro
+    </Tooltip>
+  );
+
+
+
   function onLoginGoogle() {
     // then = quando der certo o processo
     loginGoogle()
@@ -55,10 +75,10 @@ export function Cadastro() {
       });
   }
 
-  const usuarioLogado = useContext(AuthContext)
+  const usuarioLogado = useContext(AuthContext);
 
   if (usuarioLogado !== null) {
-    return <Navigate to="/"/>;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -71,10 +91,16 @@ export function Cadastro() {
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
-      </Button>
+      <OverlayTrigger
+        placement="top"
+        delay={{ show: 250, hide: 400 }}
+        overlay={renderTooltipGoogle}
+      >
+        <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+          <img src={googleIcon} width="32" alt="Logo do google" />
+          Entrar com o Google
+        </Button>
+      </OverlayTrigger>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -100,9 +126,16 @@ export function Cadastro() {
             {errors.senha?.message}
           </Form.Text>
         </Form.Group>
+
+        <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipCadastro}
+                      > 
         <Button type="submit" variant="success">
           Cadastrar
         </Button>
+        </OverlayTrigger>
       </Form>
     </Container>
   );

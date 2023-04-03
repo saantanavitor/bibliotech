@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { Button, Container, Form, InputGroup, OverlayTrigger,
+  Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -88,6 +89,33 @@ export function Login() {
     return <Navigate to="/" />;
   }
 
+
+  const renderTooltipGoogle = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Login com o Google
+    </Tooltip>
+  );
+
+  const renderTooltipGithub = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Login com o Github
+    </Tooltip>
+  );
+
+  const renderTooltipFacebook = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Login com o Facebook
+    </Tooltip>
+  );
+
+  const renderTooltipEntrar = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     Entrar
+    </Tooltip>
+  );
+
+
+
   return (
     <div data-theme="white-content">
       <Container fluid className="my-5">
@@ -99,18 +127,42 @@ export function Login() {
           Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
         </p>
         <hr />
+        <OverlayTrigger
+                        placement="top"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipGoogle}
+                      >
         <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
           <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
           Google
         </Button>
-        <Button className="mb-3 ms-3" variant="dark" onClick={onLoginGithub}>
+        </OverlayTrigger>
+
+
+        <OverlayTrigger
+                        placement="top"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipGithub}
+                      >
+                         <Button className="mb-3 ms-3" variant="dark" onClick={onLoginGithub}>
           <img src={githubIcon} width="32" alt="Google icon" /> Entrar com o
         GitHub
         </Button>
+</OverlayTrigger>
+
+<OverlayTrigger
+                        placement="top"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipFacebook}
+                      >
+                         
         <Button className="mb-3 ms-3" variant="primary" onClick={onLoginFacebook}>
           <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
         Facebook
         </Button>
+</OverlayTrigger>
+
+      
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email</Form.Label>
@@ -140,9 +192,17 @@ export function Login() {
               {errors.senha?.message}
             </Form.Text>
           </Form.Group>
-          <Button type="submit" variant="success">
+          <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEntrar}
+                      >
+                         
+                         <Button type="submit" variant="success">
             Entrar
           </Button>
+</OverlayTrigger>
+         
         </Form>
       </Container>
     </div>
