@@ -1,10 +1,11 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLivro, updateLivro, uploadCapaLivro } from "../../firebase/livros";
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { getAutor, getAutores } from "../../firebase/autores";
 
 export function EditarLivro() {
 
@@ -13,6 +14,19 @@ export function EditarLivro() {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const navigate = useNavigate();
+    
+    const autor = getAutor(id);
+    const [autores, setAutores] = useState([]);
+
+    useEffect(() => {
+        initializeAuthors();
+    }, [])
+
+    function initializeAuthors() {
+        getAutores().then(resultados => {
+            setAutores(resultados)
+        })
+    }
 
     function onSubmit(data) {
         const imagem = data.imagem[0];
@@ -40,9 +54,17 @@ export function EditarLivro() {
 
     useEffect(() => {
         getLivro(id).then(livro => {
-            reset(livro);
+            reset({
+                titulo: livro.titulo,
+                //TODO -> tentar implementar o campo com o nome do autor antes de alterar -> autor: livro.nome,
+                categoria: livro.categoria,
+                isbn: livro.isbn,
+                
+        });
         })
     }, [id, reset]);
+
+    
 
     return (
         <div className="editar-livro page" data-theme={theme}>
@@ -58,11 +80,13 @@ export function EditarLivro() {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Autor</Form.Label>
-                        <Form.Control type="text" className={errors.autor && "is-invalid"} {...register("autor", {required: "Autor é obrigatório!", maxLength: {value: 255, message: "Limite de 255 caracteres!"}})} />
-                        <Form.Text className="text-danger">
-                            {errors.autor?.message}
-                        </Form.Text>
+                        <Form.Label htmlFor="autor">Autor</Form.Label>
+                        <Form.Select type="text" className={errors.autor && "is-invalid"} {...register("autor", { required: "Autor é obrigatório!", maxLength: { value: 255, message: "Limite de 255 caracteres!" } })}>
+                            <option selected value={autor.nome} >{autor.nome}</option>
+                            {autores.map(autor => {
+                        return <option key={autor.id}>{autor.nome}</option>
+                    })}
+                        </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Categoria</Form.Label>
