@@ -71,7 +71,8 @@ export function Livros() {
                             {livros.map(livro => {
                                 return (
                                     <tr key={livro.id}>
-                                        <td>{livro.titulo}</td>
+                                        <td>
+                                            <Link to={`/livros/detalhes/${livro.id}`}>{livro.titulo}</Link> </td>
                                         <td>{livro.autor}</td>
                                         <td>{livro.categoria}</td>
                                         <td>{livro.isbn}</td>
