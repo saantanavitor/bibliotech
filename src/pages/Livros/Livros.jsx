@@ -39,7 +39,6 @@ export function Livros() {
     }
   }
 
-
   const renderTooltipAdd = (props) => (
     <Tooltip id="button-tooltip" {...props}>
     Adicionar novo livro
@@ -73,8 +72,7 @@ export function Livros() {
                        <Button as={Link} to="/livros/adicionar" variant="success">
             Adicionar novo Livro
           </Button>
-                      </OverlayTrigger>
-          
+          </OverlayTrigger>
         </div>
         <hr className="divider" />
         {livros === null ? (
