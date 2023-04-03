@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form , Tooltip, OverlayTrigger } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -37,6 +37,14 @@ export function EditarEmprestimo() {
             reset(emprestimo);
         })
     }, [id, reset]);
+
+    const renderTooltipEdit = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          Confirmar alterações
+        </Tooltip>
+      );
+
+
 
     return (
         <div className="editar-emprestimo page" data-theme={theme}>
@@ -84,7 +92,13 @@ export function EditarEmprestimo() {
                             {errors.status?.message}
                         </Form.Text>
                     </Form.Group>
+                    <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEdit}
+                      >
                     <Button type="submit" variant="success">Editar</Button>
+                    </OverlayTrigger>
                 </Form>
             </Container>
         </div>

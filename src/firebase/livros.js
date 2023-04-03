@@ -14,11 +14,16 @@ export async function addLivro(data) {
     await addDoc(livrosCollection, data);
 }
 
-export async function getLivros() {
-    const snapshot = await getDocs(livrosCollection);
-    let livros = [];
-    snapshot.forEach(doc => {
-        livros.push({...doc.data(), id: doc.id});
+export async function getLivros() {                                         // getLivros é usado tanto na lista de livros quanto no select do formulário de empréstimos
+    const snapshot = await getDocs(livrosCollection);                       // Variável criada para chamar a coleção de livros
+    let livros = [];                                                        // Array de livros
+    snapshot.forEach(doc => {                                               // Para cada livro na coleção, coloque dentro do array de livros
+        const data = {...doc.data(), id: doc.id};
+
+        if (data.active === true) {                                         // Se estiver ativo, coloque dentro do array de livros
+            livros.push(data);                                              
+        }
+        
     })
     return livros;
 }
