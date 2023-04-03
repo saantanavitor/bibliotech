@@ -108,6 +108,20 @@ export function AdicionarEmprestimo() {
               {errors.idLivro?.message}
             </Form.Text>
           </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Data de entrega</Form.Label>
+            <Form.Control
+              type="datetime-local"
+              className={errors.dataEntrega && "is-invalid"}
+              {...register("dataEntrega", {
+                required: "A data de entrega é obrigatória!",
+                maxLength: { value: 255, message: "Limite de 255 caracteres!" },
+              })}
+            />
+            <Form.Text className="invalid-feedback">
+              {errors.dataEntrega?.message}
+            </Form.Text>
+          </Form.Group>
           <Button type="submit" variant="success">
             Emprestar
           </Button>
