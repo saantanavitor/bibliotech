@@ -1,4 +1,5 @@
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, OverlayTrigger,
+    Tooltip, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -36,6 +37,12 @@ export function AdicionarLivro() {
             })
         }
     }
+
+    const renderTooltipAdd = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            Adicionar Livro na tabela
+        </Tooltip>
+      );
 
     useEffect(() => {
         initializeAuthors();
@@ -100,7 +107,16 @@ export function AdicionarLivro() {
                         <Form.Control type="file" accept=".png,.jpg,.jpeg,.gif" {...register("imagem")} />
                     </Form.Group>
                     <Form.Control type="hidden" {...register("active", {value: true})} /> {/*Criando o input com o valor "active" para que possa ser colocado como false ao ser deletado, ou seja, todo livro criado será TRUE */}
+                   
+                   
+                   
+                    <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipAdd}
+                      > 
                     <Button type="submit" variant="success">Adicionar</Button>
+                    </OverlayTrigger>
                 </Form>
             </Container>
         </div>

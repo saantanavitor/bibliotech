@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, OverlayTrigger,
+  Tooltip, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -43,6 +44,16 @@ export function AdicionarEmprestimo() {
       setLivros(busca);
     });
   }, []);
+
+
+
+  const renderTooltipEmp = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Confirmar empréstimo
+    </Tooltip>
+  );
+
+
 
   return (
     <div className="adicionar-emprestimo page" data-theme={theme}>
@@ -108,9 +119,16 @@ export function AdicionarEmprestimo() {
               {errors.idLivro?.message}
             </Form.Text>
           </Form.Group>
+
+          <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEmp}
+                      > 
           <Button type="submit" variant="success">
             Emprestar
           </Button>
+          </OverlayTrigger>
         </Form>
       </Container>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -64,7 +64,11 @@ export function EditarLivro() {
         })
     }, [id, reset]);
 
-    
+    const renderTooltipEdit = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          Confirmar alterações
+        </Tooltip>
+      );
 
     return (
         <div className="editar-livro page" data-theme={theme}>
@@ -106,8 +110,16 @@ export function EditarLivro() {
                         <Form.Label>Imagem da capa</Form.Label>
                         <Form.Control type="file" {...register("imagem")} />
                     </Form.Group>
+
+                    <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEdit}
+                      >
                     <Button type="submit" variant="success">Editar</Button>
+                    </OverlayTrigger>
                 </Form>
+                
             </Container>
         </div>
     )

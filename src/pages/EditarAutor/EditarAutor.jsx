@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,6 +26,14 @@ export function EditarAutor() {
         })
     }, [id, reset]);
 
+
+    
+  const renderTooltipEdit = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Confirmar alterações
+    </Tooltip>
+  );
+
     return (
         <div className="editar-autor">
             <Container>
@@ -46,7 +54,14 @@ export function EditarAutor() {
                             {errors.email?.message}
                         </Form.Text>
                     </Form.Group>
+
+                    <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEdit}
+                      > 
                     <Button type="submit" variant="success">Editar</Button>
+                    </OverlayTrigger>
                 </Form>
             </Container>
         </div>
