@@ -1,14 +1,38 @@
 import { useEffect, useState, useContext } from "react";
-import { Badge, Button, Container, Table } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Container,
+  Table,
+  Tooltip,
+  OverlayTrigger,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function Emprestimos() {
+  const [emprestimos, setEmprestimos] = useState(null);
+  const { theme } = useContext(ThemeContext);
 
-    const [emprestimos, setEmprestimos] = useState(null);
-    const {theme} = useContext(ThemeContext);
+  useEffect(() => {
+    getEmprestimos().then((busca) => {
+      setEmprestimos(busca);
+    });
+  }, []);
+
+const renderTooltipAdd = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Adicionar novo empréstimo
+    </Tooltip>
+  );
+
+  const renderTooltipEdit = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Editar informações do empréstimo
+    </Tooltip>
+  );
 
     useEffect(() => {
         getEmprestimos().then(busca => {
@@ -78,14 +102,20 @@ export function Emprestimos() {
                                                 {status(emprestimo)}
                                             </td>
                                             <td>
-                                                <Button
-                                                    as={Link}
-                                                    to={`/emprestimos/editar/${emprestimo.id}`}
-                                                    variant="warning"
-                                                    size="sm"
-                                                >
-                                                    <i className="bi bi-pencil-fill"></i>
-                                                </Button>
+                                                <OverlayTrigger
+                          placement="right"
+                          delay={{ show: 250, hide: 400 }}
+                          overlay={renderTooltipEdit}
+                        >
+                          <Button
+                            as={Link}
+                            to={`/emprestimos/editar/${emprestimo.id}`}
+                            variant="warning"
+                            size="sm"
+                          >
+                            <i className="bi bi-pencil-fill"></i>
+                          </Button>
+                        </OverlayTrigger>
                                             </td>
                                         </tr>
                                     )
@@ -93,8 +123,8 @@ export function Emprestimos() {
                             </tbody>
                         </Table>
                 }
-
-            </Container>
-        </div>
-    )
+        )}
+      </Container>
+    </div>
+  );
 }
