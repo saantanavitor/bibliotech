@@ -21,7 +21,9 @@ import { AdicionarAutores } from "./pages/AdicionarAutores/AdicionarAutores";
 import { EditarAutor } from "./pages/EditarAutor/EditarAutor";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
+import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { DetalhesLivro } from "./pages/DetalhesLivros/DetalhesLivro";
+
 
 
 export function App() {
@@ -57,6 +59,7 @@ export function App() {
               <Route path="/autores" element={<Autores />} />
               <Route path="/autores/adicionar" element={<AdicionarAutores />} />
               <Route path="/autores/editar/:id" element={<EditarAutor />} />
+              <Route path="/perfil/:id" element={<PerfilUsuario/>}/>
             </Route>
             <Route path="/" element={<Foot />}>
               <Route path="/login" element={<Login />} />

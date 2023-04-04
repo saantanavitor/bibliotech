@@ -7,6 +7,9 @@ import {
   signInWithPopup,
   signOut,
   GithubAuthProvider,
+  updateProfile,
+  updateEmail,
+  updatePassword,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -26,7 +29,6 @@ export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
-
   return resultado.user;
 }
 
@@ -58,4 +60,19 @@ export async function recuperarSenha(email){
 export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
+}
+
+
+export async function updateUser(user, data) {
+  await updateEmail(user, data.email);
+  await updateProfile(user, {displayName: data.displayName});
+  await updatePassword(user, data.senha);
+}
+
+export async function excluirConta(user) {
+  const confirmacao = window.confirm("Tem certeza que deseja excluir sua conta? Esta ação é irreversível.");
+ 
+  if (confirmacao) {
+    await user.delete();
+  }
 }

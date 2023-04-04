@@ -11,9 +11,12 @@ import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { ThemeContext, themes } from "../../contexts/ThemeContext";
-import { useState, useContext } from "react";
+import { useState, useContext } from 'react';
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 export function Menu() {
+  const usuarioLogado = useContext(AuthContext);
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext); // Trazendo o contexto do tema
   const [darkMode, setDarkMode] = useState(true);
@@ -76,7 +79,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/autores">
               Autores
             </Nav.Link>
-
+            { usuarioLogado.providerData[0].providerId === "password" && <Nav.Link as={Link} to={`/perfil/${usuarioLogado.uid}`}>
+              Perfil
+            </Nav.Link>}
             <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}

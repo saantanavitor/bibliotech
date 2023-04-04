@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
   const usuarioLogado = useContext(AuthContext);
-
+  
   if (usuarioLogado === null) {
     // se está deslogado
     // redireciona para a página de login
