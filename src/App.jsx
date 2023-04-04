@@ -22,6 +22,8 @@ import { EditarAutor } from "./pages/EditarAutor/EditarAutor";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
+import { DetalhesLivro } from "./pages/DetalhesLivros/DetalhesLivro";
+
 
 
 export function App() {
@@ -50,6 +52,7 @@ export function App() {
               <Route path="/livros" element={<Livros />} />
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
               <Route path="/livros/editar/:id" element={<EditarLivro />} />
+              <Route path="/livros/detalhes/:id" element={<DetalhesLivro />} />
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />

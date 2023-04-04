@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -42,6 +42,16 @@ export function EsqueciSenha() {
     return <Navigate to="/" />;
   }
 
+  const renderTooltipEntrar = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Entrar
+    </Tooltip>
+  );
+
+
+
+
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -65,9 +75,15 @@ export function EsqueciSenha() {
             {errors.email?.message}
           </Form.Text>
         </Form.Group>
+        <OverlayTrigger
+                        placement="top"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltipEntrar}
+                      >
         <Button type="submit" variant="success">
           Entrar
         </Button>
+        </OverlayTrigger>
       </Form>
     </Container>
   );
