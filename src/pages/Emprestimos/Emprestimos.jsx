@@ -103,19 +103,19 @@ const renderTooltipAdd = (props) => (
                                             </td>
                                             <td>
                                                 <OverlayTrigger
-                          placement="right"
-                          delay={{ show: 250, hide: 400 }}
-                          overlay={renderTooltipEdit}
-                        >
-                          <Button
-                            as={Link}
-                            to={`/emprestimos/editar/${emprestimo.id}`}
-                            variant="warning"
-                            size="sm"
-                          >
-                            <i className="bi bi-pencil-fill"></i>
-                          </Button>
-                        </OverlayTrigger>
+                                                  placement="right"
+                                                  delay={{ show: 250, hide: 400 }}
+                                                  overlay={renderTooltipEdit}
+                                                >
+                                                  <Button
+                                                    as={Link}
+                                                    to={`/emprestimos/editar/${emprestimo.id}`}
+                                                    variant="warning"
+                                                    size="sm"
+                                                  >
+                                                    <i className="bi bi-pencil-fill"></i>
+                                                  </Button>
+                                                </OverlayTrigger>
                                             </td>
                                         </tr>
                                     )
@@ -123,7 +123,6 @@ const renderTooltipAdd = (props) => (
                             </tbody>
                         </Table>
                 }
-        )}
       </Container>
     </div>
   );

@@ -23,6 +23,7 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { DetalhesLivro } from "./pages/DetalhesLivros/DetalhesLivro";
+import { Ajuda } from "./pages/Ajuda/Ajuda";
 
 
 
@@ -65,6 +66,7 @@ export function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/esqueciSenha" element={<EsqueciSenha />} />
+              <Route path="/Ajuda" element={<Ajuda />} />
               <Route path="/404" element={<NotFound />} />
               <Route path='*' element={<Navigate to="/404" />} />
             </Route>

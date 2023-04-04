@@ -1,0 +1,8 @@
+.linkApp{
+    text-decoration: none;
+    color: #198754;
+}
+.linkApp:hover {
+    
+    color: #146C45;
+}
