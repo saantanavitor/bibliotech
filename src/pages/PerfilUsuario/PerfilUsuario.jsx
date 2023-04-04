@@ -12,7 +12,7 @@ export function PerfilUsuario() {
     const usuarioLogado = useContext(AuthContext);
     //console.log(usuarioLogado.providerData[0].providerId)
    function onSubmit(data) {
-    console.log(data)
+    
       updateUser(usuarioLogado, data).then(() => { alert("Informações atualizadas com sucesso!")
       })
     }
@@ -22,7 +22,7 @@ export function PerfilUsuario() {
     }
 
     useEffect(() => {
-     // console.log(usuarioLogado)
+     
       reset({email: usuarioLogado.email, displayName: usuarioLogado.displayName})
     },[])
 
