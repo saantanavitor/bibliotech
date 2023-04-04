@@ -1,16 +1,17 @@
 import { useEffect, useState, useContext } from "react";
-import { Button, Container, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
+import { Button, Container, Table, Tooltip, OverlayTrigger, Form } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { updateLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { ThemeContext, themes } from "../../contexts/ThemeContext";
-import { ThemeContextWrapper } from "../../contexts/ThemeContextWrapper";
 
 export function Livros() {
   const [livros, setLivros] = useState(null);
   const { theme } = useContext(ThemeContext);
+  const [filtrarTitulo, setFiltrarTitulo] = useState("");
+  const [filtrarIsbn, setFiltrarIsbn] = useState("");
 
   useEffect(() => {
     initializeTable();
@@ -57,19 +58,40 @@ export function Livros() {
     </Tooltip>
   );
 
-
-
   return (
-    <div className="livros page" data-theme={theme}>
+    <div className="livros page " data-theme={theme}>
       <Container>
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center ">
           <h1 className="pageTitle">Livros</h1>
+          <div className="bg-light border w-25 rounded-3 input-group mb-3 mt-3">
+            <Form.Control           
+                type="text"
+                placeholder="Pesquise pelo título do livro..."
+                value={filtrarTitulo}
+                onChange={(e) => setFiltrarTitulo(e.target.value)}                  
+            />
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>          
+          </div>
+          <div className="bg-light border w-25 rounded-3 input-group mb-3 mt-3">
+            <Form.Control 
+                className="bg-light border w-25 p-2 rounded-3" 
+                type="text"
+                placeholder="Pesquise pelo ISBN do livro..."
+                value={filtrarIsbn}
+                onChange={(e) => setFiltrarIsbn(e.target.value)}                  
+            />
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </div>          
+          </div>          
           <OverlayTrigger
-                        placement="bottom"
-                        delay={{ show: 250, hide: 400 }}
-                        overlay={renderTooltipAdd}
-                      >
-                       <Button as={Link} to="/livros/adicionar" variant="success">
+                placement="bottom"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltipAdd}
+          >          
+          <Button as={Link} to="/livros/adicionar" variant="success">
             Adicionar novo Livro
           </Button>
           </OverlayTrigger>
@@ -80,7 +102,7 @@ export function Livros() {
         ) : (
           <Table bordered>
             <thead>
-              <tr>
+              <tr class="align-top text-center">
                 <th>Título</th>
                 <th>Autor</th>
                 <th>Categoria</th>
@@ -90,13 +112,15 @@ export function Livros() {
               </tr>
             </thead>
             <tbody>
-              {livros.map((livro) => {
+              {livros
+              .filter((livro) => livro.titulo.toLowerCase().includes(filtrarTitulo.toLowerCase()))
+              .filter((livro) => livro.isbn.includes(filtrarIsbn))
+              .map((livro) => {
                 return (
                   <tr key={livro.id}>
                     <td>
                         <Link to={`/livros/detalhes/${livro.id}`}>{livro.titulo}</Link>
                     </td>
-
                     <td>{livro.autor}</td>
                     <td>{livro.categoria}</td>
                     <td>{livro.isbn}</td>
