@@ -17,19 +17,19 @@ export function Footer() {
     >
       <section className="d-flex justify-content-center p-4 border-bottom">
         <div className="text-danger">
-          <Link to="" className="me-4 text-reset">
+          <Link to="https://www.facebook.com/julia.gascho" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="facebook-f" />
           </Link>
-          <Link to="" className="me-4 text-reset">
+          <Link to="" className="me-4 text-reset" target="_blank">
             <MDBIcon fab icon="google" />
           </Link>
-          <Link to="" className="me-4 text-reset">
+          <Link to="https://www.instagram.com/jugascho/" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="instagram" />
           </Link>
-          <Link to="" className="me-4 text-reset">
+          <Link to="https://www.linkedin.com/in/juliagascho/" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" />
           </Link>
-          <Link to="" className="me-4 text-reset">
+          <Link to="https://github.com/juliagascho" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="github" />
           </Link>
         </div>
@@ -96,10 +96,9 @@ export function Footer() {
         className="text-center p-4 text-danger"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
-        © 2021 Copyright:
-        <Link className="text-reset fw-bold" to="/login">
-          bibliotech.com
-          
+        © 2021 Copyright:&nbsp;
+         <Link className="text-reset fw-bold" to="/login"> 
+          bibliotech.com          
         </Link>
       </div>
     </MDBFooter>
