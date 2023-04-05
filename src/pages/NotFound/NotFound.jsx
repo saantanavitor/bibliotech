@@ -1,13 +1,16 @@
-import { useCallback, useState } from "react";
-import { Container, ButtonGroup, Button } from "react-bootstrap";
+import { useCallback, useState, useContext } from "react";
+import { Container, ButtonGroup, Button, Card } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import notFoundImg from "../../assets/images/not-found-404.jpg";
+import notFoundImg from "../../assets/images/not-found-404.png";
 import { logout } from "../../firebase/auth";
+import { ThemeContext, themes } from "../../contexts/ThemeContext";
 
 export function NotFound() {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const { theme } = useContext(ThemeContext);
+    
 
     const goLogin = useCallback(() => {
         logout().then(() => {
@@ -29,6 +32,7 @@ const closeModal = useCallback(() =>{
     
 
     return (
+        <div className="page pageTitle" data-theme={theme}>
         <Container className="d-flex flex-column justify-content-center align-items-center">
             <img src={notFoundImg} className="rounded float-end" width="300"alt="imagem de pagina não encontrada"/>
             <h4>Oops... a página que você está tentando acessar não existe.</h4>
@@ -49,5 +53,6 @@ const closeModal = useCallback(() =>{
                 </Modal.Dialog>
             </Modal>
         </Container>
+        </div>
     )
 }

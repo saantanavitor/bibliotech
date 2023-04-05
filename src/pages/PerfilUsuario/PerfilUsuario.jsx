@@ -1,20 +1,30 @@
-import { useContext, useEffect } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import { atualizarEmail, atualizarPerfil, atualizarSenha, excluirConta, getCurrentUser, updateUser } from "../../firebase/auth";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 
 export function PerfilUsuario() {
     const navigate = useNavigate()
     const {reset, register, handleSubmit, formState: { errors } } = useForm();
     const {id} = useParams();
     const usuarioLogado = useContext(AuthContext);
-   function onSubmit(data) {
+    const { theme } = useContext(ThemeContext);
+
+    function onSubmit(data) {
     updateUser(usuarioLogado, data).then(() => { 
       navigate("/");
       })
     }
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  function revealPassword() {
+    setShowPassword(!showPassword);
+  }
 
     function excluirUsuario(){
       excluirConta(usuarioLogado)
@@ -26,6 +36,7 @@ export function PerfilUsuario() {
     },[])
 
   return (
+
     <section id="pagina" class="vh-100">
       <div data-theme="white-content" class="container body-content py-5 h-100">
         <div class="row d-flex justify-content-end align-items-center h-100 ">
@@ -44,7 +55,13 @@ export function PerfilUsuario() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Senha</Form.Label>
-          <Form.Control type="password" className={errors.titulo && "is-invalid"} {...register("senha", { required: "A senha é obrigatória!", maxLength: { value: 255, message: "Limite de 255 caracteres!" } })}/>
+          <InputGroup>
+          <Form.Control type={showPassword ? "text" : "password"}
+          className={errors.titulo && "is-invalid"}
+          {...register("senha", { required: "A senha é obrigatória!", maxLength: { value: 255, message: "Limite de 255 caracteres!" } })}
+          aria-describedby="basic-addon1"/>
+          <InputGroup.Text id="basic-addon1"><i onClick={revealPassword} className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i></InputGroup.Text>
+          </InputGroup>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicNome">
           <Form.Label>Nome de Usuário</Form.Label>
@@ -61,7 +78,6 @@ export function PerfilUsuario() {
           Deletar
         </Button>
       </Form>
-      
     </Container>
     </div>
             </div>
@@ -69,6 +85,5 @@ export function PerfilUsuario() {
         </div>
       </div>
     </section>
-  
   );
 }

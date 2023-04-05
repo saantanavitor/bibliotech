@@ -9,8 +9,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { addAutor } from "../../firebase/autores";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from "react";
+
 
 export function AdicionarAutores() {
+
+  const { theme } = useContext(ThemeContext);
   const {
     register,
     handleSubmit,
@@ -35,7 +40,7 @@ export function AdicionarAutores() {
   );
 
   return (
-    <div className="adicionar-autor">
+    <div className="adicionar-autor page pageTitle" data-theme={theme} >
       <Container>
         <h1>Adicionar autor</h1>
         <hr />

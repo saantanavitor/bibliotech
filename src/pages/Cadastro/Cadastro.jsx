@@ -4,6 +4,7 @@ import {
   Form,
   OverlayTrigger,
   Tooltip,
+  InputGroup,
 } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
@@ -14,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginFacebook, loginGithub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { addUsuarios } from "../../firebase/usuarios";
 
@@ -24,6 +25,12 @@ export function Cadastro() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  function revealPassword() {
+    setShowPassword(!showPassword);
+  }
 
   const navigate = useNavigate();
 
@@ -204,12 +211,16 @@ export function Cadastro() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
+          <InputGroup>
           <Form.Control
-            type="password"
+            type={showPassword ? "text" : "password"}
             className={errors.senha && "is-invalid"}
             placeholder="Sua senha"
             {...register("senha", { required: "A senha é obrigatória" })}
+            aria-describedby="basic-addon1"
           />
+          <InputGroup.Text id="basic-addon1"><i onClick={revealPassword} className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i></InputGroup.Text>
+          </InputGroup>
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
