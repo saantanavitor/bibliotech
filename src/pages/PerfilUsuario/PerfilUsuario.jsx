@@ -6,14 +6,13 @@ import { atualizarEmail, atualizarPerfil, atualizarSenha, excluirConta, getCurre
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 export function PerfilUsuario() {
-    const navigate = useNavigate
+    const navigate = useNavigate()
     const {reset, register, handleSubmit, formState: { errors } } = useForm();
     const {id} = useParams();
     const usuarioLogado = useContext(AuthContext);
-    //console.log(usuarioLogado.providerData[0].providerId)
    function onSubmit(data) {
-    
-      updateUser(usuarioLogado, data).then(() => { alert("Informações atualizadas com sucesso!")
+    updateUser(usuarioLogado, data).then(() => { 
+      navigate("/");
       })
     }
 
@@ -27,6 +26,13 @@ export function PerfilUsuario() {
     },[])
 
   return (
+    <section id="pagina" class="vh-100">
+      <div data-theme="white-content" class="container body-content py-5 h-100">
+        <div class="row d-flex justify-content-end align-items-center h-100 ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5 flex-column ">
+            <div class="card shadow-2-strong raduius-2 h-50">
+              <div class="card-body p-5 text-center">
+                <h3 class="mb-5">Perfil do usuário</h3>
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)} >
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -48,7 +54,7 @@ export function PerfilUsuario() {
           </Form.Text>
         </Form.Group>
         
-        <Button variant="success" type="submit">
+        <Button variant="primary" type="submit">
           Editar informações
         </Button>
         <Button onClick={excluirUsuario} className="ms-3" variant="danger" type="button">
@@ -57,5 +63,12 @@ export function PerfilUsuario() {
       </Form>
       
     </Container>
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
   );
 }
