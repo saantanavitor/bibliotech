@@ -12,15 +12,15 @@ export function NotFound() {
     const { theme } = useContext(ThemeContext);
     
 
-const goLogin = useCallback(function () {
-    logout().then(() => {
-        navigate('/login');
-    })
-}, []);
-
-const backHome = useCallback(() => {
-    navigate('/');
-}, []) 
+    const goLogin = useCallback(() => {
+        logout().then(() => {
+            navigate('/login');
+        })
+    }, [navigate]);
+    
+    const backHome = useCallback(() => {
+        navigate('/');
+    }, [navigate])
 
 const displayModal = useCallback(() =>{
     setShowModal(true);

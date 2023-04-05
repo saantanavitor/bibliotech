@@ -8,20 +8,22 @@
     --divider: #000000;
     --text: #000000;
     --formLabel: #000000;
+    --paragraph: #FFFFFF;
 }
 
 [data-theme="dark"] {                    /* Classe pai envolvendo todas as variáveis filhas */
-    --background: #404649;
+    --background: #36393b;
     --title: white;
     --button: #000000;
     --divider: #FFFFFF;
     --text: #FFFFFF;
     --formLabel: #FFFFFF;
+    --paragraph: #000000;
 }
 
 .page {                                                       
     background-color: var(--background);   /* Usando variável de background que pode ser alterada pelo data-theme e root*/
-    height: 100vh;   
+    height: 100%;   
 }
 
 .pageTitle {
@@ -32,7 +34,11 @@
     color: var(--divider);
 }
 
-tr th, tr td{
+tr th, tr td, col{
+    color: var(--text)
+}
+
+p{
     color: var(--text)
 }
 

@@ -53,7 +53,7 @@ export function Menu() {
     
   return (
     <Navbar
-      bg={theme === "dark" ? "dark" : "success"}
+      bg={theme === "dark" ? "dark" : "danger"}
       variant="dark"
       expand="lg"
     >

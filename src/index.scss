@@ -1,0 +1,118 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+:root {                              /* Início da página */
+    --background: #ffffff;         /* Criando variáveis de CSS */
+    --title: black;
+    --button: #FFFFFF;
+    --divider: #000000;
+    --text: #000000;
+    --formLabel: #000000;
+}
+
+[data-theme="dark"] {                    /* Classe pai envolvendo todas as variáveis filhas */
+    --background: #1f1e1e;
+    --title: white;
+    --button: #000000;
+    --divider: #FFFFFF;
+    --text: #FFFFFF;
+    --formLabel: #FFFFFF;
+}
+
+.page {                                                       
+    background-color: var(--background);   /* Usando variável de background que pode ser alterada pelo data-theme e root*/
+    height: 100vh;   
+}
+
+.pageTitle {
+    color: var(--title);
+}
+
+.divider {
+    color: var(--divider);
+}
+
+tr th, tr td{
+    color: var(--text)
+}
+
+.form-label {
+    color: var(--formLabel)
+}
+
+@import "~bootstrap/scss/variables";
+
+$theme-colors: (
+    "info": #41474a,
+    "danger": #84953c,
+    "success": #57615e,
+    "dark": #41474a,
+    "primary": #c9d18c,
+    "warning": #515a29,
+);
+
+$theme-colors-text: (
+    "info": #41474a,
+    "danger": #84953c,
+    "success": #57615e,
+    "dark": #41474a,
+    "primary": #c9d18c,
+    "warning": #515a29,
+);
+
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+
+// $theme-colors-background: (
+//     "info": #41474a,
+//     "danger": #84953c,
+//     "success": #57615e,
+//     "dark": #41474a,
+//     "primary": #c9d18c,
+//     "warning": #515a29,
+// );
+
+// $theme-colors-rgb: map-loop($theme-colors-background, to-rgb, "$value");
+
+// .bg-warning {
+//     background-color: map-get($theme-colors-background, warning);
+// }
+
+.btn-danger {
+    // Use a sombra padrão para os botões que não têm uma sombra personalizada
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    
+    @each $color, $value in $theme-colors {
+      &.btn-#{$color} {
+        background-color: $value;
+        box-shadow: 0 1px 0 0.05rem rgba(0, 0, 0, 0.15), 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+        &:hover,
+        &:focus {
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.5rem 1.5rem rgba($value, 0.5);
+          background-color: darken($value, 10%);
+        }
+      }
+    }
+  }
+
+  .btn-primary {
+    // Use a sombra padrão para os botões que não têm uma sombra personalizada
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    
+    @each $color, $value in $theme-colors {
+      &.btn-#{$color} {
+        background-color: $value;
+        box-shadow: 0 1px 0 0.05rem rgba(0, 0, 0, 0.15), 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+        &:hover,
+        &:focus {
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.5rem 1.5rem rgba($value, 0.5);
+          background-color: darken($value, 10%);
+        }
+      }
+    }
+  }
+
+// @import "../node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
