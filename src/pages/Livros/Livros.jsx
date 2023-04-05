@@ -69,7 +69,7 @@ export function Livros() {
                         delay={{ show: 250, hide: 400 }}
                         overlay={renderTooltipAdd}
                       >
-                       <Button as={Link} to="/livros/adicionar" variant="success">
+                      <Button as={Link} to="/livros/adicionar" variant="success">
             Adicionar novo Livro
           </Button>
           </OverlayTrigger>
@@ -94,9 +94,9 @@ export function Livros() {
                 return (
                   <tr key={livro.id}>
                     <td>
-                        <Link to={`/livros/detalhes/${livro.id}`}>{livro.titulo}</Link>
+                        <Link className="title" to={`/livros/detalhes/${livro.id}`}>
+                          {livro.titulo}</Link>
                     </td>
-
                     <td>{livro.autor}</td>
                     <td>{livro.categoria}</td>
                     <td>{livro.isbn}</td>

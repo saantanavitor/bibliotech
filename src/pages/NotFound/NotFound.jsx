@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Container, ButtonGroup, Button, Card } from "react-bootstrap";
+import { Container, ButtonGroup, Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import notFoundImg from "../../assets/images/not-found-404.jpg";
@@ -13,11 +13,11 @@ const goLogin = useCallback(function () {
     logout().then(() => {
         navigate('/login');
     })
-}, []);
+}, [navigate]);
 
 const backHome = useCallback(() => {
     navigate('/');
-}, []) 
+}, [navigate]) 
 
 const displayModal = useCallback(() =>{
     setShowModal(true);

@@ -5,3 +5,9 @@ td {
 td img {
     height: 200px;
 }
+
+.title {
+    text-decoration: none;
+    color: var(--title);
+}
+
