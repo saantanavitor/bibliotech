@@ -11,12 +11,16 @@ import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { ThemeContext, themes } from "../../contexts/ThemeContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export function Menu() {
+  const usuarioLogado = useContext(AuthContext);
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext); // Trazendo o contexto do tema
   const [darkMode, setDarkMode] = useState(true);
+  let email = usuarioLogado.email;
+  const [nome, setNome ] = useState("")
 
   function onLogout() {
     logout().then(() => {
@@ -41,7 +45,12 @@ export function Menu() {
       Ir para Home
     </Tooltip>
   );
-
+  useEffect(() => {
+    let index = email.split("@")
+    setNome(index[0])
+    
+  },[])
+    
   return (
     <Navbar
       bg={theme === "dark" ? "dark" : "success"}
@@ -76,7 +85,23 @@ export function Menu() {
             <Nav.Link as={Link} to="/autores">
               Autores
             </Nav.Link>
-
+            {usuarioLogado.providerData[0].providerId === "password" && (
+              <Nav.Link as={Link} to={`/perfil/${usuarioLogado.uid}`}>
+                Perfil
+              </Nav.Link>
+            )}
+            {usuarioLogado.displayName !== null ?
+            (
+              <Nav.Link>
+                <span>{usuarioLogado.displayName}</span>
+              </Nav.Link>
+            )
+            :
+            (
+            <Nav.Link>
+                <span>{nome}</span>
+            </Nav.Link>
+            )}
             <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}

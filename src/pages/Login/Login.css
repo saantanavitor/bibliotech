@@ -1,0 +1,31 @@
+a:link {
+    text-decoration: none;    
+}
+
+.link {
+    color:rgb(30, 33, 33);
+}
+
+.link:hover {
+    color: #84953c;
+}
+
+.imgForm {
+    margin: 20px auto;
+    border: 2px solid rgb(30, 33, 33);
+    width: 400px;
+    height: 100%;
+    border-radius: 5px;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#pagina {
+    background-image: url("../../assets/images/imagemLogin2.jpg");
+    background-size: 100%;    
+}
+
+
+
+

@@ -6,6 +6,8 @@ import {
   MDBCol,
   MDBIcon
 } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 export function Footer() {
   return (
@@ -15,21 +17,21 @@ export function Footer() {
     >
       <section className="d-flex justify-content-center p-4 border-bottom">
         <div className="text-danger">
-          <a href="" className="me-4 text-reset">
+          <Link to="https://www.facebook.com/julia.gascho" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="facebook-f" />
-          </a>
-          <a href="" className="me-4 text-reset">
+          </Link>
+          <Link to="" className="me-4 text-reset" target="_blank">
             <MDBIcon fab icon="google" />
-          </a>
-          <a href="" className="me-4 text-reset">
+          </Link>
+          <Link to="https://www.instagram.com/jugascho/" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="instagram" />
-          </a>
-          <a href="" className="me-4 text-reset">
+          </Link>
+          <Link to="https://www.linkedin.com/in/juliagascho/" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" />
-          </a>
-          <a href="" className="me-4 text-reset">
+          </Link>
+          <Link to="https://github.com/juliagascho" target="_blank" className="me-4 text-reset">
             <MDBIcon fab icon="github" />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -37,10 +39,13 @@ export function Footer() {
         <MDBContainer className="text-center text-md-start mt-5">
           <MDBRow className="mt-3">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">
-                <MDBIcon className="me-3" />
-                Bibliotech
-              </h6>
+              <Link to="/login" className="linkApp">
+                <h6 className="text-uppercase  fw-bold mb-4">
+                  {/* <img src={livros} width={30} height={30} alt="" /> */}
+                  <MDBIcon icon="bi bi-journal-code fa-lg" className="me-3" />
+                  Bibliotech
+                </h6>
+              </Link>
               <p className="text-center text-md-start mt-5">
                 A biblioteca tem por objetivo o atendimento à comunidade local
                 no oferecimento de suporte informacional.
@@ -48,24 +53,24 @@ export function Footer() {
             </MDBCol>
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <p>
-                <a href="#!" className="text-reset">
+                <Link to="#!" className="text-reset">
                   Termos de uso
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <Link to="/ajuda" className="text-reset linkApp">
                   Ajuda
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <Link to="#!" className="text-reset">
                   Políticas de privacidade
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <Link to="#!" className="text-reset">
                   Blogs
-                </a>
+                </Link>
               </p>
             </MDBCol>
 
@@ -91,10 +96,10 @@ export function Footer() {
         className="text-center p-4 text-danger"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
-        © 2021 Copyright:
-        <a className="text-reset fw-bold" href="/">
-          bibliotech.com
-        </a>
+        © 2021 Copyright:&nbsp;
+         <Link className="text-reset fw-bold" to="/login"> 
+          bibliotech.com          
+        </Link>
       </div>
     </MDBFooter>
   );

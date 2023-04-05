@@ -21,7 +21,10 @@ import { AdicionarAutores } from "./pages/AdicionarAutores/AdicionarAutores";
 import { EditarAutor } from "./pages/EditarAutor/EditarAutor";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
+import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { DetalhesLivro } from "./pages/DetalhesLivros/DetalhesLivro";
+import { Ajuda } from "./pages/Ajuda/Ajuda";
+
 
 
 export function App() {
@@ -57,11 +60,13 @@ export function App() {
               <Route path="/autores" element={<Autores />} />
               <Route path="/autores/adicionar" element={<AdicionarAutores />} />
               <Route path="/autores/editar/:id" element={<EditarAutor />} />
+              <Route path="/perfil/:id" element={<PerfilUsuario/>}/>
             </Route>
             <Route path="/" element={<Foot />}>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/esqueciSenha" element={<EsqueciSenha />} />
+              <Route path="/Ajuda" element={<Ajuda />} />
               <Route path="/404" element={<NotFound />} />
               <Route path='*' element={<Navigate to="/404" />} />
             </Route>
