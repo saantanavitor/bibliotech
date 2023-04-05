@@ -12,6 +12,8 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { auth } from "./config";
+import { addUsuarios, getUsuario } from "./usuarios";
+
 
 // Função assíncrona = que o resultado não é obtido de imediato
 // Haverá "espera"
@@ -29,12 +31,26 @@ export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
+  const usuario = await getUsuario(resultado.user.uid);
+
+  if(usuario === undefined){
+    console.log("passei aqui");
+    addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
+  }
+
   return resultado.user;
 }
 
 export async function loginFacebook(){
 const provider = new FacebookAuthProvider();
 const resultado = await signInWithPopup(auth, provider)
+const usuario = await getUsuario(resultado.user.uid);
+
+  if(usuario === undefined){
+    console.log("passei aqui");
+    addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
+  }
+
 return resultado.user;
 
 };
@@ -42,6 +58,12 @@ return resultado.user;
 export async function loginGithub() {
   const provider = new GithubAuthProvider();
   const resultado = await signInWithPopup(auth, provider)
+  const usuario = await getUsuario(resultado.user.uid);
+
+  if(usuario === undefined){
+    console.log("passei aqui");
+    addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
+  }
 
   return resultado.user;
 }
@@ -71,7 +93,6 @@ export async function updateUser(user, data) {
 
 export async function excluirConta(user) {
   const confirmacao = window.confirm("Tem certeza que deseja excluir sua conta? Esta ação é irreversível.");
- 
   if (confirmacao) {
     await user.delete();
   }
