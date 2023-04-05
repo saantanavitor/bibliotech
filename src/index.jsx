@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
-import "./index.css";
+import "./index.scss";
 import ThemeContextWrapper from "./contexts/ThemeContextWrapper";
 
 const rootElement = document.getElementById("root");
