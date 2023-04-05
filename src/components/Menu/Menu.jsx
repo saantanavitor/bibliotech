@@ -13,6 +13,7 @@ import { logout } from "../../firebase/auth";
 import { ThemeContext, themes } from "../../contexts/ThemeContext";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import logo from "../../assets/images/logo.png";
 
 export function Menu() {
   const usuarioLogado = useContext(AuthContext);
@@ -65,7 +66,7 @@ export function Menu() {
         >
           <Navbar.Brand>
             <Link to="/">
-              <img src={logoIcon} width="32" alt="Logo" />
+              <img src={logo} width="180" alt="Logo" />
             </Link>
           </Navbar.Brand>
         </OverlayTrigger>

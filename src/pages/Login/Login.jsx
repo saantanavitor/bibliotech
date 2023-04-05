@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import {
-  Button,
-  Container,
+  Button,  
   Form,
   InputGroup,
   OverlayTrigger,
@@ -12,7 +11,7 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
-import imagemLogin2 from "../../assets/images/imagemLogin2.jpg";
+import logo from "../../assets/images/logo.png";
 import facebookIcon from "../../assets/icons/facebook (1).svg";
 import { AuthContext } from "../../contexts/AuthContext";
 import {
@@ -126,12 +125,15 @@ export function Login() {
   );
 
   return (
-    <section id="pagina" class="vh-100">
-      <div data-theme="white-content" class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong raduius-2">
+    <section id="pagina">
+      <div data-theme="white-content" class="container body-content py-5 h-100">
+        <div class="row d-flex justify-content-end align-items-center h-100 ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5 flex-column ">
+            <div class="card shadow-2-strong raduius-2 h-50">
               <div class="card-body p-5 text-center">
+              <p className="text-center">
+                  <img src={logo} width="250" alt="Logo do app" />
+                </p>
                 <h3 class="mb-5">Bem vindo de volta ao Bibliotech!</h3>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -179,7 +181,7 @@ export function Login() {
                     delay={{ show: 250, hide: 400 }}
                     overlay={renderTooltipEntrar}
                   >
-                    <Button type="submit" variant="danger">
+                    <Button type="submit" variant="warning" className="text-light">
                       Entrar
                     </Button>
                   </OverlayTrigger>
@@ -198,8 +200,8 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginGoogle}
                   >
-                    <img src={googleIcon} width="32" alt="Google icon" className="me-3" />
-                    Entrar com o Google
+                    <img src={googleIcon} width="28" alt="Google icon" />
+                    
                   </Button>
                 </OverlayTrigger>
 
@@ -213,8 +215,8 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginGithub}
                   >
-                    <img src={githubIcon} width="32" alt="Google icon" className="me-3"/>
-                    Entrar com o GitHub
+                    <img src={githubIcon} width="28" alt="Google icon"/>
+                    
                   </Button>
                 </OverlayTrigger>
 
@@ -228,13 +230,16 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginFacebook}
                   >
-                    <img src={facebookIcon} width="32" alt="Facebook icon" className="me-3"/>
-                    Entrar com o Facebook
+                    <img src={facebookIcon} width="28" alt="Facebook icon"/>
+                    
                   </Button>
                 </OverlayTrigger>
 
                 <hr />
 
+                <p className="text-muted">
+                  Esqueceu sua senha? <Link to="/esqueciSenha" className="link">Clique aqui</Link>
+                </p>
                 <p className="text-muted">
                   Não tem conta? <Link to="/cadastro" className="link">Cadastre-se</Link>
                 </p>

@@ -3,11 +3,11 @@ import {
   Container,
   Form,
   OverlayTrigger,
-  Tooltip,
+  Tooltip
 } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-import logoIcon from "../../assets/icons/livros.png";
-import googleIcon from "../../assets/icons/google-white.svg";
+import logo from "../../assets/images/logo.png";
+
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
@@ -19,7 +19,7 @@ export function Cadastro() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
   const navigate = useNavigate();
@@ -30,14 +30,14 @@ export function Cadastro() {
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 2500
         });
         navigate("/");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 2500
         });
       });
   }
@@ -50,11 +50,9 @@ export function Cadastro() {
 
   const renderTooltipCadastro = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-     Confirmar Cadastro
+      Confirmar Cadastro
     </Tooltip>
   );
-
-
 
   function onLoginGoogle() {
     // then = quando der certo o processo
@@ -62,7 +60,7 @@ export function Cadastro() {
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 2500
         });
         navigate("/");
       })
@@ -70,7 +68,7 @@ export function Cadastro() {
         // tratamento de erro
         toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 2500
         });
       });
   }
@@ -82,61 +80,67 @@ export function Cadastro() {
   }
 
   return (
-    <Container fluid className="my-5">
-      <p className="text-center">
-        <img src={logoIcon} width="256" alt="Logo do app" />
-      </p>
-      <h4>Faça parte da nossa plataforma</h4>
-      <p className="text-muted">
-        Já tem conta? <Link to="/login">Entre</Link>
-      </p>
-      <hr />
-      <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={renderTooltipGoogle}
-      >
-        <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-          <img src={googleIcon} width="32" alt="Logo do google" />
-          Entrar com o Google
-        </Button>
-      </OverlayTrigger>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            className={errors.email && "is-invalid"}
-            placeholder="Seu email"
-            {...register("email", { required: "O email é obrigatório" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.email?.message}
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
-            placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
-        </Form.Group>
+    <section id="pagina">
+      <div data-theme="white-content" class="container body-content py-5 h-100">
+        <div class="row d-flex justify-content-end align-items-center h-100 ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5 flex-column ">
+            <div class="card shadow-2-strong raduius-2 h-50">
+              <div class="card-body p-5 text-center">
 
-        <OverlayTrigger
-                        placement="bottom"
-                        delay={{ show: 250, hide: 400 }}
-                        overlay={renderTooltipCadastro}
-                      > 
-        <Button type="submit" variant="success">
-          Cadastrar
-        </Button>
-        </OverlayTrigger>
-      </Form>
-    </Container>
+                <p className="text-center">
+                  <img src={logo} width="250" alt="Logo do app" />
+                </p>
+                <h4>Faça parte da nossa plataforma</h4>
+                <p className="text-muted">
+                  Já possui conta? <Link to="/login" className="link">Entre</Link>                  
+                </p>
+                <hr />
+                
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      className={errors.email && "is-invalid"}
+                      placeholder="Seu email"
+                      {...register("email", {
+                        required: "O email é obrigatório"
+                      })}
+                    />
+                    <Form.Text className="invalid-feedback">
+                      {errors.email?.message}
+                    </Form.Text>
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Senha</Form.Label>
+                    <Form.Control
+                      type="password"
+                      className={errors.senha && "is-invalid"}
+                      placeholder="Sua senha"
+                      {...register("senha", {
+                        required: "A senha é obrigatória"
+                      })}
+                    />
+                    <Form.Text className="invalid-feedback">
+                      {errors.senha?.message}
+                    </Form.Text>
+                  </Form.Group>
+
+                  <OverlayTrigger
+                    placement="bottom"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltipCadastro}
+                  >
+                    <Button type="submit" variant="warning" className="text-light">
+                      Cadastrar
+                    </Button>
+                  </OverlayTrigger>
+                </Form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
