@@ -34,7 +34,6 @@ export async function loginGoogle() {
   const usuario = await getUsuario(resultado.user.uid);
 
   if(usuario === undefined){
-    console.log("passei aqui");
     addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
   }
 
@@ -47,7 +46,6 @@ const resultado = await signInWithPopup(auth, provider)
 const usuario = await getUsuario(resultado.user.uid);
 
   if(usuario === undefined){
-    console.log("passei aqui");
     addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
   }
 
@@ -61,7 +59,6 @@ export async function loginGithub() {
   const usuario = await getUsuario(resultado.user.uid);
 
   if(usuario === undefined){
-    console.log("passei aqui");
     addUsuarios({id: resultado.user.uid, email: resultado.user.email, displayName: resultado.user.displayName});
   }
 

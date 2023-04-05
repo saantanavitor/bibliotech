@@ -12,7 +12,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
 import logo from "../../assets/images/logo.png";
-import facebookIcon from "../../assets/icons/facebook (1).svg";
+import facebookIcon from "../../assets/icons/facebook.svg";
 import { AuthContext } from "../../contexts/AuthContext";
 import {
   loginGoogle,

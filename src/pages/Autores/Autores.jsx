@@ -84,6 +84,7 @@ export function Autores() {
               <tr>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
