@@ -1,23 +1,19 @@
 import {
   Button,
-  Container,
   Form,
   OverlayTrigger,
   Tooltip,
   InputGroup,
 } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-import logoIcon from "../../assets/icons/livros.png";
-import googleIcon from "../../assets/icons/google-white.svg";
-import githubIcon from "../../assets/icons/github.svg";
-import facebookIcon from "../../assets/icons/facebook.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginFacebook, loginGithub, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { addUsuarios } from "../../firebase/usuarios";
+import logo from "../../assets/images/logo.png"
 
 export function Cadastro() {
   const {
@@ -38,7 +34,7 @@ export function Cadastro() {
     const { email, senha } = data;
     cadastrarEmailSenha(email, senha)
       .then((user) => {
-       addUsuarios({id: user.uid, email: user.email, displayName: user.displayName}).then(() => {
+      addUsuarios({id: user.uid, email: user.email, displayName: user.displayName}).then(() => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
           duration: 2500
@@ -51,7 +47,8 @@ export function Cadastro() {
           duration: 2500
         });
       });
-  }
+  })
+}
   
   const renderTooltipCadastro = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -99,14 +96,25 @@ export function Cadastro() {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Senha</Form.Label>
-                    <Form.Control
-                      type="password"
-                      className={errors.senha && "is-invalid"}
-                      placeholder="Sua senha"
-                      {...register("senha", {
-                        required: "A senha é obrigatória"
-                      })}
-                    />
+                    <InputGroup>
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Sua senha"
+                        className={errors.senha ? "is-invalid" : ""}
+                        {...register("senha", {
+                          required: "Senha é obrigatória"
+                        })}
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text id="basic-addon1">
+                        <i
+                          onClick={revealPassword}
+                          className={
+                            showPassword ? "bi bi-eye" : "bi bi-eye-slash"
+                          }
+                        ></i>
+                      </InputGroup.Text>
+                    </InputGroup>
                     <Form.Text className="invalid-feedback">
                       {errors.senha?.message}
                     </Form.Text>

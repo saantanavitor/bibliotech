@@ -76,7 +76,6 @@ export function Livros() {
           </div>
           <div className="bg-light border w-25 rounded-3 input-group mb-3 mt-3">
             <Form.Control 
-                className="bg-light border w-25 p-2 rounded-3" 
                 type="text"
                 placeholder="Pesquise pelo ISBN do livro..."
                 value={filtrarIsbn}
