@@ -26,10 +26,10 @@ export function DetalhesLivro() {
     }
 
     return(
-        <div className="livros page d-flex mt-4 mb-4" data-theme={theme}> 
-            <Card className="card-livro" style={{ width: '22rem', height:'32rem' }}>
+        <div className="livros page pageTitle d-flex mt-4 mb-4" data-theme={theme}> 
+            <Card className="card-livro pageTitle" style={{ width: '22rem', height:'32rem' }}>
                     <Card.Img variant="top" src={livro.urlCapa} alt={livro.titulo} />
-                <Card.Body className="card-conteudo">
+                <Card.Body className="card-conteudo page pageTitle">
                     <Card.Text>
                         <p>Autor: {livro.autor}</p>
                         <p>ISBN: {livro.isbn}</p>
@@ -53,7 +53,7 @@ export function DetalhesLivro() {
                 Adicionar aos Favoritos</Button>
                 <Container className="mt-4" >
                 <Row>
-                    <Col> <img src={calendarIcon} width="19" alt="Calendar icon" />
+                    <Col className="page pageTitle" data-theme={theme}> <img src={calendarIcon} width="19" alt="Calendar icon" />
                     <p>Data de publicação:</p>
                     </Col>
                     <Col> <img src={bookIcon} width="20" alt="Book icon" />

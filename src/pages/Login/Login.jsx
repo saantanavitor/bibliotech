@@ -201,7 +201,6 @@ export function Login() {
                     onClick={onLoginGoogle}
                   >
                     <img src={googleIcon} width="28" alt="Google icon" />
-                    
                   </Button>
                 </OverlayTrigger>
 
@@ -215,8 +214,7 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginGithub}
                   >
-                    <img src={githubIcon} width="28" alt="Google icon"/>
-                    
+                    <img src={githubIcon} width="28" alt="Google icon"/>                    
                   </Button>
                 </OverlayTrigger>
 
@@ -230,8 +228,7 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginFacebook}
                   >
-                    <img src={facebookIcon} width="28" alt="Facebook icon"/>
-                    
+                    <img src={facebookIcon} width="28" alt="Facebook icon"/>                    
                   </Button>
                 </OverlayTrigger>
 
@@ -251,115 +248,3 @@ export function Login() {
     </section>
   );
 }
-//     <div data-theme="white-content">
-//       <Container fluid className="my-5">
-
-//         <div>
-
-//         </div>
-//         <p className="text-center">
-//           <img src={imagemlogin} width="256" alt="Logo" />
-//         </p>
-//         <h4>Bem-vindo(a) de volta!</h4>
-
-//         <Form onSubmit={handleSubmit(onSubmit)}>
-//           <Form.Group className="mb-3" controlId="email">
-//             <Form.Label>Email</Form.Label>
-//             <Form.Control
-//               type="email"
-//               placeholder="Seu email"
-//               className={errors.email ? "is-invalid" : ""}
-//               {...register("email", { required: "Email é obrigatório" })}
-//             />
-//             <Form.Text className="invalid-feedback">
-//               {errors.email?.message}
-//             </Form.Text>
-//           </Form.Group>
-//           <Form.Group className="mb-3" controlId="senha">
-//             <Form.Label>Senha</Form.Label>
-//             <InputGroup>
-//               <Form.Control
-//                 type={showPassword ? "text" : "password"}
-//                 placeholder="Sua senha"
-//                 className={errors.senha ? "is-invalid" : ""}
-//                 {...register("senha", { required: "Senha é obrigatória" })}
-//                 aria-describedby="basic-addon1"
-//               />
-//               <InputGroup.Text id="basic-addon1">
-//                 <i
-//                   onClick={revealPassword}
-//                   className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}
-//                 ></i>
-//               </InputGroup.Text>
-//             </InputGroup>
-//             <Form.Text className="invalid-feedback">
-//               {errors.senha?.message}
-//             </Form.Text>
-//           </Form.Group>
-//           <OverlayTrigger
-//             placement="bottom"
-//             delay={{ show: 250, hide: 400 }}
-//             overlay={renderTooltipEntrar}
-//           >
-//             <Button type="submit" variant="danger">
-//               Entrar
-//             </Button>
-//           </OverlayTrigger>
-//         </Form>
-
-//         <hr />
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipGoogle}
-//         >
-//           <Button
-//             className="mb-3"
-//             variant="primary"
-//             onClick={onLoginGoogle}
-//           >
-//             <img src={googleIcon} width="32" alt="Google icon" />
-//             Entrar com o Google
-//           </Button>
-//         </OverlayTrigger>
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipGithub}
-//         >
-//           <Button
-//             className="mb-3 ms-3"
-//             variant="primary"
-//             onClick={onLoginGithub}
-//           >
-//             <img src={githubIcon} width="32" alt="Google icon" />
-//             Entrar com o GitHub
-//           </Button>
-//         </OverlayTrigger>
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipFacebook}
-//         >
-//           <Button
-//             className="mb-3 ms-3"
-//             variant="primary"
-//             onClick={onLoginFacebook}
-//           >
-//             <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com
-//             o Facebook
-//           </Button>
-//         </OverlayTrigger>
-
-//         <hr />
-
-//         <p className="text-muted">
-//           Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-//         </p>
-//       </Container>
-//     </div>
-//   );
-// }

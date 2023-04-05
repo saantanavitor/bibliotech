@@ -3,17 +3,21 @@ import {
   Container,
   Form,
   OverlayTrigger,
-  Tooltip
+  Tooltip,
+  InputGroup,
 } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-
+import logoIcon from "../../assets/icons/livros.png";
+import googleIcon from "../../assets/icons/google-white.svg";
+import githubIcon from "../../assets/icons/github.svg";
+import facebookIcon from "../../assets/icons/facebook.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginFacebook, loginGithub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { addUsuarios } from "../../firebase/usuarios";
 
 export function Cadastro() {
   const {
@@ -22,12 +26,19 @@ export function Cadastro() {
     formState: { errors }
   } = useForm();
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  function revealPassword() {
+    setShowPassword(!showPassword);
+  }
+
   const navigate = useNavigate();
 
   function onSubmit(data) {
     const { email, senha } = data;
     cadastrarEmailSenha(email, senha)
       .then((user) => {
+       addUsuarios({id: user.uid, email: user.email, displayName: user.displayName}).then(() => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
           duration: 2500
@@ -41,37 +52,12 @@ export function Cadastro() {
         });
       });
   }
-
-  const renderTooltipGoogle = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Login com o Google
-    </Tooltip>
-  );
-
+  
   const renderTooltipCadastro = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Confirmar Cadastro
     </Tooltip>
   );
-
-  function onLoginGoogle() {
-    // then = quando der certo o processo
-    loginGoogle()
-      .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500
-        });
-        navigate("/");
-      })
-      .catch((erro) => {
-        // tratamento de erro
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
-          position: "bottom-right",
-          duration: 2500
-        });
-      });
-  }
 
   const usuarioLogado = useContext(AuthContext);
 
