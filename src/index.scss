@@ -50,6 +50,7 @@ $theme-colors: (
     "dark": #41474a,
     "primary": #c9d18c,
     "warning": #515a29,
+    "light": #c9d18c,
 );
 
 $theme-colors-text: (
@@ -59,6 +60,7 @@ $theme-colors-text: (
     "dark": #41474a,
     "primary": #c9d18c,
     "warning": #515a29,
+    "light": #c9d18c,
 );
 
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
@@ -97,6 +99,24 @@ $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
   }
 
   .btn-primary {
+    // Use a sombra padrão para os botões que não têm uma sombra personalizada
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    
+    @each $color, $value in $theme-colors {
+      &.btn-#{$color} {
+        background-color: $value;
+        box-shadow: 0 1px 0 0.05rem rgba(0, 0, 0, 0.15), 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    
+        &:hover,
+        &:focus {
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.5rem 1.5rem rgba($value, 0.5);
+          background-color: darken($value, 10%);
+        }
+      }
+    }
+  }
+
+  .btn-warning {
     // Use a sombra padrão para os botões que não têm uma sombra personalizada
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
     

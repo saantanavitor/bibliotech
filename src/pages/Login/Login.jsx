@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import {
-  Button,
+  Button,  
   Form,
   InputGroup,
   OverlayTrigger,
@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubIcon from "../../assets/icons/github.svg";
-import imagemLogin2 from "../../assets/images/imagemLogin2.jpg";
+import logo from "../../assets/images/logo.png";
 import facebookIcon from "../../assets/icons/facebook (1).svg";
 import { AuthContext } from "../../contexts/AuthContext";
 import {
@@ -125,12 +125,15 @@ export function Login() {
   );
 
   return (
-    <section id="pagina" class="vh-100">
-      <div data-theme="white-content" class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-2-strong raduius-2">
+    <section id="pagina">
+      <div data-theme="white-content" class="container body-content py-5 h-100">
+        <div class="row d-flex justify-content-end align-items-center h-100 ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5 flex-column ">
+            <div class="card shadow-2-strong raduius-2 h-50">
               <div class="card-body p-5 text-center">
+              <p className="text-center">
+                  <img src={logo} width="250" alt="Logo do app" />
+                </p>
                 <h3 class="mb-5">Bem vindo de volta ao Bibliotech!</h3>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -178,7 +181,7 @@ export function Login() {
                     delay={{ show: 250, hide: 400 }}
                     overlay={renderTooltipEntrar}
                   >
-                    <Button type="submit" variant="danger">
+                    <Button type="submit" variant="warning" className="text-light">
                       Entrar
                     </Button>
                   </OverlayTrigger>
@@ -197,8 +200,7 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginGoogle}
                   >
-                    <img src={googleIcon} width="32" alt="Google icon" className="me-3" />
-                   
+                    <img src={googleIcon} width="28" alt="Google icon" />
                   </Button>
                 </OverlayTrigger>
 
@@ -212,8 +214,7 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginGithub}
                   >
-                    <img src={githubIcon} width="32" alt="Google icon" className="me-3"/>
-                    
+                    <img src={githubIcon} width="28" alt="Google icon"/>                    
                   </Button>
                 </OverlayTrigger>
 
@@ -227,13 +228,15 @@ export function Login() {
                     variant="primary"
                     onClick={onLoginFacebook}
                   >
-                    <img src={facebookIcon} width="32" alt="Facebook icon" className="me-3"/>
-                    
+                    <img src={facebookIcon} width="28" alt="Facebook icon"/>                    
                   </Button>
                 </OverlayTrigger>
 
                 <hr />
 
+                <p className="text-muted">
+                  Esqueceu sua senha? <Link to="/esqueciSenha" className="link">Clique aqui</Link>
+                </p>
                 <p className="text-muted">
                   Não tem conta? <Link to="/cadastro" className="link">Cadastre-se</Link>
                 </p>
@@ -245,115 +248,3 @@ export function Login() {
     </section>
   );
 }
-//     <div data-theme="white-content">
-//       <Container fluid className="my-5">
-
-//         <div>
-
-//         </div>
-//         <p className="text-center">
-//           <img src={imagemlogin} width="256" alt="Logo" />
-//         </p>
-//         <h4>Bem-vindo(a) de volta!</h4>
-
-//         <Form onSubmit={handleSubmit(onSubmit)}>
-//           <Form.Group className="mb-3" controlId="email">
-//             <Form.Label>Email</Form.Label>
-//             <Form.Control
-//               type="email"
-//               placeholder="Seu email"
-//               className={errors.email ? "is-invalid" : ""}
-//               {...register("email", { required: "Email é obrigatório" })}
-//             />
-//             <Form.Text className="invalid-feedback">
-//               {errors.email?.message}
-//             </Form.Text>
-//           </Form.Group>
-//           <Form.Group className="mb-3" controlId="senha">
-//             <Form.Label>Senha</Form.Label>
-//             <InputGroup>
-//               <Form.Control
-//                 type={showPassword ? "text" : "password"}
-//                 placeholder="Sua senha"
-//                 className={errors.senha ? "is-invalid" : ""}
-//                 {...register("senha", { required: "Senha é obrigatória" })}
-//                 aria-describedby="basic-addon1"
-//               />
-//               <InputGroup.Text id="basic-addon1">
-//                 <i
-//                   onClick={revealPassword}
-//                   className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}
-//                 ></i>
-//               </InputGroup.Text>
-//             </InputGroup>
-//             <Form.Text className="invalid-feedback">
-//               {errors.senha?.message}
-//             </Form.Text>
-//           </Form.Group>
-//           <OverlayTrigger
-//             placement="bottom"
-//             delay={{ show: 250, hide: 400 }}
-//             overlay={renderTooltipEntrar}
-//           >
-//             <Button type="submit" variant="danger">
-//               Entrar
-//             </Button>
-//           </OverlayTrigger>
-//         </Form>
-
-//         <hr />
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipGoogle}
-//         >
-//           <Button
-//             className="mb-3"
-//             variant="primary"
-//             onClick={onLoginGoogle}
-//           >
-//             <img src={googleIcon} width="32" alt="Google icon" />
-//             Entrar com o Google
-//           </Button>
-//         </OverlayTrigger>
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipGithub}
-//         >
-//           <Button
-//             className="mb-3 ms-3"
-//             variant="primary"
-//             onClick={onLoginGithub}
-//           >
-//             <img src={githubIcon} width="32" alt="Google icon" />
-//             Entrar com o GitHub
-//           </Button>
-//         </OverlayTrigger>
-
-//         <OverlayTrigger
-//           placement="top"
-//           delay={{ show: 250, hide: 400 }}
-//           overlay={renderTooltipFacebook}
-//         >
-//           <Button
-//             className="mb-3 ms-3"
-//             variant="primary"
-//             onClick={onLoginFacebook}
-//           >
-//             <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com
-//             o Facebook
-//           </Button>
-//         </OverlayTrigger>
-
-//         <hr />
-
-//         <p className="text-muted">
-//           Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-//         </p>
-//       </Container>
-//     </div>
-//   );
-// }

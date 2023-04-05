@@ -11,8 +11,7 @@ import "./Footer.css";
 
 export function Footer() {
   return (
-    <MDBFooter
-      bgColor="light"
+    <MDBFooter     
       className="text-center text-lg-start text-success"
     >
       <section className="d-flex justify-content-center p-4 border-bottom">
@@ -40,8 +39,7 @@ export function Footer() {
           <MDBRow className="mt-3">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <Link to="/login" className="linkApp">
-                <h6 className="text-uppercase  fw-bold mb-4">
-                  {/* <img src={livros} width={30} height={30} alt="" /> */}
+                <h6 className="text-uppercase  fw-bold mb-4">                  
                   <MDBIcon icon="bi bi-journal-code fa-lg" className="me-3" />
                   Bibliotech
                 </h6>

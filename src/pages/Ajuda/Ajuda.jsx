@@ -2,6 +2,7 @@ import { Accordion, Carousel, Container } from "react-bootstrap";
 import carouselItem1 from "../../assets/images/Bibliotech-Carousel-1.jpg"
 import carouselItem2 from "../../assets/images/Bibliotech-Carousel-2.jpg"
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 import "./Ajuda.css"
 
 
@@ -12,6 +13,9 @@ export function Ajuda(){
 
     return(
         <Container>
+            <p className="text-start">
+                  <img src={logo} width="200" alt="Logo do app" />
+                </p>
             <h1 style={{textAlign: "center", fontSize:"45px"}}>Ajuda</h1>
             {/* Inicio do Accordion */}
             <Accordion defaultActiveKey={['0']} alwaysOpen>
