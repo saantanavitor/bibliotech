@@ -9,16 +9,15 @@ export function NotFound() {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
 
-const goLogin = useCallback(function () {
-    logout().then(() => {
-        navigate('/login');
-    })
-}, []);
-
-const backHome = useCallback(() => {
-    navigate('/');
-}, []) 
-
+    const goLogin = useCallback(() => {
+        logout().then(() => {
+            navigate('/login');
+        })
+    }, [navigate]);
+    
+    const backHome = useCallback(() => {
+        navigate('/');
+    }, [navigate])
 const displayModal = useCallback(() =>{
     setShowModal(true);
 },[]);
