@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   Button,
   Container,
@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import "./Autores.css";
 import { deleteAutor, getAutores } from "../../firebase/autores";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function Autores() {
   const [autores, setAutores] = useState(null);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     initializeTable();
@@ -59,7 +61,7 @@ export function Autores() {
   );
 
   return (
-    <div className="autores">
+    <div className="autores page pageTitle" data-theme={theme}>
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Autores</h1>
@@ -77,7 +79,7 @@ export function Autores() {
         {autores === null ? (
           <Loader />
         ) : (
-          <Table striped bordered hover>
+          <Table bordered hover>
             <thead>
               <tr>
                 <th>Nome</th>
