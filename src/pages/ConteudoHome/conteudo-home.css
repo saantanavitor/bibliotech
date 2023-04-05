@@ -1,0 +1,56 @@
+.border-primary{
+    border: 5px solid;
+    border-radius: 10px;
+}
+
+.border-danger{
+    border: 5px solid;
+    border-radius: 10px;
+}
+
+.border-success{
+    border: 5px solid;
+    border-radius: 10px;
+}
+
+.info-home{
+    padding-top: 50px;
+    display: grid;
+    grid-auto-columns: auto auto auto;
+    justify-content: space-evenly;
+  
+}
+
+.info-home-item1{
+    grid-row: 2 / 4;
+}
+
+.info-home-item2{
+    grid-row: 2 / 4;
+}
+
+.info-home-item3{
+    grid-row: 2 / 4;
+}
+
+.info-home-item-table{
+    padding-top: 70px;
+    grid-column: 1/4;
+}
+
+.info-home-item-carousel{
+    
+    padding-top: 60px;
+    grid-column: 1/5;
+}
+
+thead{
+    text-align: center;
+    background-color: #198754;
+    
+}
+
+td{
+    text-align: center;
+}
+

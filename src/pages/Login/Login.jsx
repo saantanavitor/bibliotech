@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import {
   Button,
-  Container,
   Form,
   InputGroup,
   OverlayTrigger,
@@ -199,7 +198,7 @@ export function Login() {
                     onClick={onLoginGoogle}
                   >
                     <img src={googleIcon} width="32" alt="Google icon" className="me-3" />
-                    Entrar com o Google
+                   
                   </Button>
                 </OverlayTrigger>
 
@@ -214,7 +213,7 @@ export function Login() {
                     onClick={onLoginGithub}
                   >
                     <img src={githubIcon} width="32" alt="Google icon" className="me-3"/>
-                    Entrar com o GitHub
+                    
                   </Button>
                 </OverlayTrigger>
 
@@ -229,7 +228,7 @@ export function Login() {
                     onClick={onLoginFacebook}
                   >
                     <img src={facebookIcon} width="32" alt="Facebook icon" className="me-3"/>
-                    Entrar com o Facebook
+                    
                   </Button>
                 </OverlayTrigger>
 
