@@ -119,7 +119,8 @@ export function Livros() {
                 return (
                   <tr key={livro.id}>
                     <td>
-                        <Link to={`/livros/detalhes/${livro.id}`}>{livro.titulo}</Link>
+                        <Link className="title" to={`/livros/detalhes/${livro.id}`}>
+                          {livro.titulo}</Link>
                     </td>
                     <td>{livro.autor}</td>
                     <td>{livro.categoria}</td>
