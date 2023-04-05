@@ -2,7 +2,7 @@ import { Accordion, Carousel, Container } from "react-bootstrap";
 import carouselItem1 from "../../assets/images/Bibliotech-Carousel-1.jpg"
 import carouselItem2 from "../../assets/images/Bibliotech-Carousel-2.jpg"
 import { Link } from "react-router-dom";
-
+import "./Ajuda.css"
 
 
 
@@ -16,19 +16,19 @@ export function Ajuda(){
             {/* Inicio do Accordion */}
             <Accordion defaultActiveKey={['0']} alwaysOpen>
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>O que é a Bibliotech?</Accordion.Header>
+                    <Accordion.Header  className="ref1">O que é a Bibliotech?</Accordion.Header>
                     <Accordion.Body>
                     Bibliotech é uma biblioteca constituída por documentos primários, que são digitalizados quer sob a forma material, quer em linha através da Internet, permitindo o acesso à distância. Este conceito inclui também a ideia de organização composta por serviços e recursos, cujo objetivo é selecionar, organizar e distribuir a informação, conservando a integridade dos documentos digitalizados.
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header>Como a Bibliotech consegue os livros?</Accordion.Header>
+                <Accordion.Item eventKey="1" >
+                    <Accordion.Header  className="ref1">Como a Bibliotech consegue os livros?</Accordion.Header>
                     <Accordion.Body>
                     Todo o acervo de livros fornecido pela Bibliotech é fornecido através de doações.
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header>Consigo ler meu livro favorito pelo Bibliotech?</Accordion.Header>
+                <Accordion.Item eventKey="2" >
+                    <Accordion.Header  className="ref1">Consigo ler meu livro favorito pelo Bibliotech?</Accordion.Header>
                     <Accordion.Body>
                     Sim, desde que ele esteja disponível no nosso acervo, acesse a Bibliotech:<Link to="/login">Clicando Aqui!</Link>
                     </Accordion.Body>

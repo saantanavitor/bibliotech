@@ -24,6 +24,7 @@ import { EsqueciSenha } from "./pages/EsqueciSenha/EsqueciSenha";
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { DetalhesLivro } from "./pages/DetalhesLivros/DetalhesLivro";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
+import { ConteudosHome } from "./pages/ConteudoHome/ConteudoHome";
 
 
 
@@ -49,18 +50,20 @@ export function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Root />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/livros" element={<Livros />} />
-              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
-              <Route path="/livros/editar/:id" element={<EditarLivro />} />
-              <Route path="/livros/detalhes/:id" element={<DetalhesLivro />} />
-              <Route path="/emprestimos" element={<Emprestimos />} />
-              <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-              <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-              <Route path="/autores" element={<Autores />} />
-              <Route path="/autores/adicionar" element={<AdicionarAutores />} />
-              <Route path="/autores/editar/:id" element={<EditarAutor />} />
-              <Route path="/perfil/:id" element={<PerfilUsuario/>}/>
+                <Route path="/" element={<Home />} >
+                  <Route path="/" element={<ConteudosHome />} />
+                </Route> 
+                <Route path="/livros" element={<Livros />} />
+                <Route path="/livros/adicionar" element={<AdicionarLivro />} />
+                <Route path="/livros/editar/:id" element={<EditarLivro />} />
+                <Route path="/livros/detalhes/:id" element={<DetalhesLivro />} />
+                <Route path="/emprestimos" element={<Emprestimos />} />
+                <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
+                <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+                <Route path="/autores" element={<Autores />} />
+                <Route path="/autores/adicionar" element={<AdicionarAutores />} />
+                <Route path="/autores/editar/:id" element={<EditarAutor />} />
+                <Route path="/perfil/:id" element={<PerfilUsuario/>}/>
             </Route>
             <Route path="/" element={<Foot />}>
               <Route path="/login" element={<Login />} />
