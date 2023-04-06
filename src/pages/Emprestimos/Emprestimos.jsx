@@ -61,6 +61,7 @@ const renderTooltipAdd = (props) => (
     }
            
     return (
+      <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
         <div className="emprestimos page" data-theme={theme}>
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
@@ -124,6 +125,7 @@ const renderTooltipAdd = (props) => (
                         </Table>
                 }
       </Container>
+    </div>
     </div>
   );
 }

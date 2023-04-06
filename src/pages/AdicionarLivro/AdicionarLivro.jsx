@@ -92,6 +92,8 @@ export function AdicionarLivro() {
     }
 
     return (
+    
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
         <div className="adicionar-livro page" data-theme={theme}>
             <Container>
                 <h1 className="pageTitle">Adicionar livro</h1>
@@ -172,6 +174,7 @@ export function AdicionarLivro() {
                     </OverlayTrigger>
                 </Form>
             </Container>
+        </div>
         </div>
     )
 }

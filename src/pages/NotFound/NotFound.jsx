@@ -32,6 +32,7 @@ const closeModal = useCallback(() =>{
     
 
     return (
+        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
         <div className="page pageTitle" data-theme={theme}>
         <Container className="d-flex flex-column justify-content-center align-items-center">
             <img src={notFoundImg} className="rounded float-end" width="300"alt="imagem de pagina não encontrada"/>
@@ -53,6 +54,7 @@ const closeModal = useCallback(() =>{
                 </Modal.Dialog>
             </Modal>
         </Container>
+        </div>
         </div>
     )
 }

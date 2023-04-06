@@ -4,10 +4,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAutor, updateAutor } from "../../firebase/autores";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from "react";
 
 export function EditarAutor() {
 
     const {id} = useParams();
+    const {theme} = useContext(ThemeContext);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const navigate = useNavigate();
@@ -35,7 +38,8 @@ export function EditarAutor() {
   );
 
     return (
-        <div className="editar-autor">
+        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+        <div className="page editar-autor">
             <Container>
                 <h1>Editar autor</h1>
                 <hr />
@@ -64,6 +68,7 @@ export function EditarAutor() {
                     </OverlayTrigger>
                 </Form>
             </Container>
+        </div>
         </div>
     )
 }

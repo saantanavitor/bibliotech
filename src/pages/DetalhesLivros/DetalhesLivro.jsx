@@ -26,6 +26,7 @@ export function DetalhesLivro() {
     }
 
     return(
+        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
         <div className="livros page pageTitle d-flex mt-4 mb-4" data-theme={theme}> 
             <Card className="card-livro pageTitle" style={{ width: '22rem', height:'32rem' }}>
                     <Card.Img variant="top" src={livro.urlCapa} alt={livro.titulo} />
@@ -65,6 +66,7 @@ export function DetalhesLivro() {
                 </Row>
             </Container>
             </Container>
-        </div>    
+        </div>
+        </div>  
     )
 }

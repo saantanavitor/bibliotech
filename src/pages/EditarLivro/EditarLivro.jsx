@@ -71,6 +71,7 @@ export function EditarLivro() {
       );
 
     return (
+        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
         <div className="editar-livro page" data-theme={theme}>
             <Container>
                 <h1>Editar livro</h1>
@@ -121,6 +122,7 @@ export function EditarLivro() {
                 </Form>
                 
             </Container>
+        </div>
         </div>
     )
 }

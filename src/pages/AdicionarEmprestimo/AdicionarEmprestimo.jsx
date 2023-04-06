@@ -56,95 +56,97 @@ export function AdicionarEmprestimo() {
 
 
   return (
-    <div className="adicionar-emprestimo page" data-theme={theme}>
-      <Container>
-        <h1 className="pageTitle">Adicionar empréstimo</h1>
-        <hr />
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className="mb-3">
-            <Form.Label>Leitor</Form.Label>
-            <Form.Control
-              type="text"
-              className={errors.leitor && "is-invalid"}
-              {...register("leitor", {
-                required: "Leitor é obrigatório!",
-                maxLength: { value: 255, message: "Limite de 255 caracteres!" },
-              })}
-            />
-            <Form.Text className="invalid-feedback">
-              {errors.leitor?.message}
-            </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>E-mail</Form.Label>
-            <Form.Control
-              type="email"
-              className={errors.email && "is-invalid"}
-              {...register("email", {
-                required: "E-mail é obrigatório!",
-                maxLength: { value: 255, message: "Limite de 255 caracteres!" },
-              })}
-            />
-            <Form.Text className="invalid-feedback">
-              {errors.email?.message}
-            </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Telefone</Form.Label>
-            <Form.Control
-              type="tel"
-              className={errors.telefone && "is-invalid"}
-              {...register("telefone", {
-                required: "Telefone é obrigatório!",
-                maxLength: { value: 15, message: "Limite de 15 caracteres!" },
-              })}
-            />
-            <Form.Text className="invalid-feedback">
-              {errors.telefone?.message}
-            </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Livro</Form.Label>
-            <Form.Select
-              className={errors.idLivro && "is-invalid"}
-              {...register("idLivro", { required: "Livro é obrigatório!" })}
-            >
-              {livros.map((livro) => (
-                <option key={livro.id} value={livro.id}>
-                  {livro.titulo}
-                </option>
-              ))}
-            </Form.Select>
-            <Form.Text className="invalid-feedback">
-              {errors.idLivro?.message}
-            </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Data de entrega</Form.Label>
-            <Form.Control
-              type="datetime-local"
-              className={errors.dataEntrega && "is-invalid"}
-              {...register("dataEntrega", {
-                required: "A data de entrega é obrigatória!",
-                maxLength: { value: 255, message: "Limite de 255 caracteres!" },
-              })}
-            />
-            <Form.Text className="invalid-feedback">
-              {errors.dataEntrega?.message}
-            </Form.Text>
-          </Form.Group>
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+      <div className="adicionar-emprestimo page" data-theme={theme}>
+        <Container>
+          <h1 className="pageTitle">Adicionar empréstimo</h1>
+          <hr />
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group className="mb-3">
+              <Form.Label>Leitor</Form.Label>
+              <Form.Control
+                type="text"
+                className={errors.leitor && "is-invalid"}
+                {...register("leitor", {
+                  required: "Leitor é obrigatório!",
+                  maxLength: { value: 255, message: "Limite de 255 caracteres!" },
+                })}
+              />
+              <Form.Text className="invalid-feedback">
+                {errors.leitor?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control
+                type="email"
+                className={errors.email && "is-invalid"}
+                {...register("email", {
+                  required: "E-mail é obrigatório!",
+                  maxLength: { value: 255, message: "Limite de 255 caracteres!" },
+                })}
+              />
+              <Form.Text className="invalid-feedback">
+                {errors.email?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Telefone</Form.Label>
+              <Form.Control
+                type="tel"
+                className={errors.telefone && "is-invalid"}
+                {...register("telefone", {
+                  required: "Telefone é obrigatório!",
+                  maxLength: { value: 15, message: "Limite de 15 caracteres!" },
+                })}
+              />
+              <Form.Text className="invalid-feedback">
+                {errors.telefone?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Livro</Form.Label>
+              <Form.Select
+                className={errors.idLivro && "is-invalid"}
+                {...register("idLivro", { required: "Livro é obrigatório!" })}
+              >
+                {livros.map((livro) => (
+                  <option key={livro.id} value={livro.id}>
+                    {livro.titulo}
+                  </option>
+                ))}
+              </Form.Select>
+              <Form.Text className="invalid-feedback">
+                {errors.idLivro?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Data de entrega</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                className={errors.dataEntrega && "is-invalid"}
+                {...register("dataEntrega", {
+                  required: "A data de entrega é obrigatória!",
+                  maxLength: { value: 255, message: "Limite de 255 caracteres!" },
+                })}
+              />
+              <Form.Text className="invalid-feedback">
+                {errors.dataEntrega?.message}
+              </Form.Text>
+            </Form.Group>
 
-          <OverlayTrigger
-                        placement="bottom"
-                        delay={{ show: 250, hide: 400 }}
-                        overlay={renderTooltipEmp}
-                      > 
-          <Button type="submit" variant="success">
-            Emprestar
-          </Button>
-          </OverlayTrigger>
-        </Form>
-      </Container>
+            <OverlayTrigger
+                          placement="bottom"
+                          delay={{ show: 250, hide: 400 }}
+                          overlay={renderTooltipEmp}
+                        > 
+            <Button type="submit" variant="success">
+              Emprestar
+            </Button>
+            </OverlayTrigger>
+          </Form>
+        </Container>
+      </div>
     </div>
   );
 }

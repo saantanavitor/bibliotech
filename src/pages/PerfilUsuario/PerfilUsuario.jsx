@@ -36,7 +36,7 @@ export function PerfilUsuario() {
     },[])
 
   return (
-
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
     <section id="pagina" class="vh-100">
       <div data-theme="white-content" class="container body-content py-5 h-100">
         <div class="row d-flex justify-content-end align-items-center h-100 ">
@@ -85,5 +85,6 @@ export function PerfilUsuario() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { updateLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
-import { ThemeContext, themes } from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function Livros() {
   const [livros, setLivros] = useState(null);
@@ -59,6 +59,7 @@ export function Livros() {
   );
 
   return (
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
     <div className="livros page " data-theme={theme}>
       <Container>
         <div className="d-flex justify-content-between align-items-center ">
@@ -165,6 +166,7 @@ export function Livros() {
           </Table>
         )}
       </Container>
+    </div>
     </div>
   );
 }

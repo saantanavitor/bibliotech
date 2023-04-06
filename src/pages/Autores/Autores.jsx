@@ -61,6 +61,7 @@ export function Autores() {
   );
 
   return (
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
     <div className="autores page pageTitle" data-theme={theme}>
       <Container>
         <div className="d-flex justify-content-between align-items-center">
@@ -132,6 +133,7 @@ export function Autores() {
           </Table>
         )}
       </Container>
+    </div>
     </div>
   );
 }

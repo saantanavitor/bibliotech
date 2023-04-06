@@ -23,6 +23,7 @@ a:link {
 
 #pagina {
     background-image: url("../../assets/images/imagemLogin2.jpg");
+    background-size: cover;
     
 }
 

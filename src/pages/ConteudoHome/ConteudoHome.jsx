@@ -13,11 +13,14 @@ import check from "../../assets/icons/check.svg";
 
 
 import "./conteudo-home.css";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from "react";
 
 
 export function ConteudosHome() {
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState([]);
+  const { theme } = useContext(ThemeContext);
   
   useEffect(() => {
     getLivros().then((resultado) => {
@@ -45,8 +48,8 @@ export function ConteudosHome() {
 
 
   return (
-   
-    <div className="info-home">
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+    <div className="page info-home">
       <h1>Visão Geral</h1> 
 
       <div
@@ -100,7 +103,7 @@ export function ConteudosHome() {
       </div>
 
       <div className="info-home-item-table">
-        <Table striped bordered hover size="xl">
+        <Table bordered size="xl">
           <thead>
             <tr>
               <th width="313px">Leitor</th>
@@ -144,6 +147,7 @@ export function ConteudosHome() {
 
         </Carousel>
       </div>
+    </div>
     </div>
   );
 }

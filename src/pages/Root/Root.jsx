@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Footer } from "../../components/Footer/Footer";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
   const usuarioLogado = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
   
   if (usuarioLogado === null) {
     // se está deslogado
@@ -16,7 +17,7 @@ export function Root() {
   }
 
   return (
-    <>
+    <div id="bodyRoot" className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
       <header>
         <Menu />
       </header>
@@ -24,6 +25,6 @@ export function Root() {
         <Outlet />
       </main>
       
-    </>
+    </div>
   );
 }
