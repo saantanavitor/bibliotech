@@ -17,7 +17,7 @@ export function Root() {
   }
 
   return (
-    <div id="bodyRoot" className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+    <div id="bodyRoot" className={theme ? "bg-dark text-light page" : "bg-light text-dark page"}>
       <header>
         <Menu />
       </header>

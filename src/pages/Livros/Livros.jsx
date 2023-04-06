@@ -59,7 +59,7 @@ export function Livros() {
   );
 
   return (
-    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+    <div className={theme ? "bg-dark text-light vh-100" : "bg-light text-dark vh-100"}>
     <div className="livros page " data-theme={theme}>
       <Container>
         <div className="d-flex justify-content-between align-items-center ">

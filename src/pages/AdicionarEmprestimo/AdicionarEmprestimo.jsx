@@ -57,7 +57,7 @@ export function AdicionarEmprestimo() {
 
   return (
     <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-      <div className="adicionar-emprestimo page" data-theme={theme}>
+      <div className="adicionar-emprestimo page vh-100" data-theme={theme}>
         <Container>
           <h1 className="pageTitle">Adicionar empréstimo</h1>
           <hr />

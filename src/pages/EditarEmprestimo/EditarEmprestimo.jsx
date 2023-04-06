@@ -48,7 +48,7 @@ export function EditarEmprestimo() {
 
     return (
         <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-        <div className="editar-emprestimo page" data-theme={theme}>
+        <div className="editar-emprestimo page vh-100" data-theme={theme}>
             <Container>
                 <h1>Editar empréstimo</h1>
                 <hr />

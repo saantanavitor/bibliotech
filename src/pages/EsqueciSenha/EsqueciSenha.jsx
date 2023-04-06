@@ -3,7 +3,7 @@ import { Button, Container, Form, OverlayTrigger, Tooltip } from "react-bootstra
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import loginImg from "../../assets/images/login.png";
+import logo from "../../assets/images/logo.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { recuperarSenha } from "../../firebase/auth";
 
@@ -53,15 +53,21 @@ export function EsqueciSenha() {
 
 
   return (
-    <Container fluid className="my-5">
-      <p className="text-center">
-        <img src={loginImg} width="256" alt="Logo" />
-      </p>
-      <h4>Esqueçeu sua senha??</h4>
-      <p className="text-muted">
-        Já tem conta? <Link to="/login">Login</Link>
-      </p>
-      <hr />
+    <section id="pagina">
+      <div data-theme="white-content" class="container body-content py-5 h-100">
+        <div class="row d-flex justify-content-end align-items-center h-100 ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5 flex-column ">
+            <div class="card shadow-2-strong raduius-2 h-50">
+              <div class="card-body p-5 text-center">
+    <Container className="py-5">
+    <p className="text-center">
+                  <img src={logo} width="350" alt="Logo do app" />
+                </p>
+                <h4>Faça parte da nossa plataforma</h4>
+                <p className="text-muted">
+                  Já possui conta? <Link to="/login" className="link">Entre</Link>                  
+                </p>
+                <hr />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -86,5 +92,11 @@ export function EsqueciSenha() {
         </OverlayTrigger>
       </Form>
     </Container>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -40,8 +40,8 @@ export function AdicionarAutores() {
   );
 
   return (
-    <div id="bodyAdicionarAut" className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-      <div className="adicionar-autor page pageTitle" data-theme={theme} >
+    <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
+      <div className="adicionar-autor page pageTitle vh-100" data-theme={theme} >
         <Container>
           <h1>Adicionar autor</h1>
           <hr />

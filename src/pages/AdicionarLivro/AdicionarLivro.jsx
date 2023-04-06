@@ -94,7 +94,7 @@ export function AdicionarLivro() {
     return (
     
     <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-        <div className="adicionar-livro page" data-theme={theme}>
+        <div className="adicionar-livro page vh-100" data-theme={theme}>
             <Container>
                 <h1 className="pageTitle">Adicionar livro</h1>
                 <hr />

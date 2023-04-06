@@ -39,7 +39,7 @@ export function EditarAutor() {
 
     return (
         <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-        <div className="page editar-autor">
+        <div className="autores page pageTitle vh-100" data-theme={theme}>
             <Container>
                 <h1>Editar autor</h1>
                 <hr />
