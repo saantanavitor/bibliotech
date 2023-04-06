@@ -80,7 +80,7 @@ export function Autores() {
         {autores === null ? (
           <Loader />
         ) : (
-          <Table bordered hover>
+          <Table bordered>
             <thead>
               <tr>
                 <th>Nome</th>
