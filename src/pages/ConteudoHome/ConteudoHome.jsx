@@ -49,7 +49,7 @@ export function ConteudosHome() {
 
   return (
     <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-    <div className="page info-home">
+    <div className="page info-home pt-3">
       <h1>Visão Geral</h1> 
 
       <div

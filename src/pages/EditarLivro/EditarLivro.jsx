@@ -56,7 +56,6 @@ export function EditarLivro() {
         getLivro(id).then(livro => {
             reset({
                 titulo: livro.titulo,
-                //TODO -> tentar implementar o campo com o nome do autor antes de alterar -> autor: livro.nome,
                 categoria: livro.categoria,
                 isbn: livro.isbn,
                 

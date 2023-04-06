@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import notFoundImg from "../../assets/images/not-found-404.png";
 import { logout } from "../../firebase/auth";
-import { ThemeContext, themes } from "../../contexts/ThemeContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function NotFound() {
     const navigate = useNavigate();
@@ -32,8 +32,8 @@ const closeModal = useCallback(() =>{
     
 
     return (
-        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"}>
-        <div className="page pageTitle" data-theme={theme}>
+        <div className={theme ? "bg-dark text-light" : "bg-light text-dark"} >
+        <div className="page pageTitle pb-5 mb-5">
         <Container className="d-flex flex-column justify-content-center align-items-center">
             <img src={notFoundImg} className="rounded float-end" width="300"alt="imagem de pagina não encontrada"/>
             <h4>Oops... a página que você está tentando acessar não existe.</h4>
