@@ -17,7 +17,6 @@ Na página de livros o usuário pode conferir todos os livros disponibilizados n
 ### Página de empréstimos
 Na página de empréstimos temos todos os livros que se encontram empréstados e as suas datas de empréstimo e entrega respectivamente.
 
-## Algumas imagens do projeto
 
 
 
