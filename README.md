@@ -18,6 +18,6 @@ Na página de livros o usuário pode conferir todos os livros disponibilizados n
 Na página de empréstimos temos todos os livros que se encontram empréstados e as suas datas de empréstimo e entrega respectivamente.
 
 ## Qual banco de dados foi utilizado?
-## O banco de dados utilizado foi o Firebase, onde armazenamos os livros, listamos, fazemos alterações e apagamos todos os dados.
+# O banco de dados utilizado foi o Firebase, onde armazenamos os livros, listamos, fazemos alterações e apagamos todos os dados.
 
 
